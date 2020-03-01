@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-keywords:
-author: John Doe
-language:
-timezone:
+title: Shane In Tech Life
+subtitle:	as above
+description: Shane's blog
+keywords:	Shaneye, Shane Ye, Shane, yesihao, 叶思浩
+author:	Shane Ye
+language:	zh-CN
+timezone:	Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://shenye.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -79,5 +79,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/yesihao/yesihao.github.io.git
+  repo: git@github.com:yesihao/yesihao.github.io.git
   branch: gh-pages
