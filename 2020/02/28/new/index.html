@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="Shane&apos;s blog">
-<meta name="keywords" content="Shaneye, Shane Ye, Shane, yesihao, 叶思浩">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Shane In Tech Life">
-<meta property="og:url" content="http://shenye.me/index.html">
+  <meta name="description" content="普通数组:1let fruits = [`bananas`, `Apples`, `Oranges`]; You can sort of alphabetize that as easy as:很简单，一行搞定： 1fruits.sort(); 但是要注意数组中不同字符串的大小写不一致… 大写的字符会被排在小写字符之前😂所以还有其他的步骤： 1234567let fruits = [`banan">
+<meta name="keywords" content="Javascript, array">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript - 数组，对象数组，对象按字母顺序的排序的小技巧">
+<meta property="og:url" content="http://shenye.me/2020/02/28/new/index.html">
 <meta property="og:site_name" content="Shane In Tech Life">
-<meta property="og:description" content="Shane&apos;s blog">
+<meta property="og:description" content="普通数组:1let fruits = [`bananas`, `Apples`, `Oranges`]; You can sort of alphabetize that as easy as:很简单，一行搞定： 1fruits.sort(); 但是要注意数组中不同字符串的大小写不一致… 大写的字符会被排在小写字符之前😂所以还有其他的步骤： 1234567let fruits = [`banan">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-01T13:54:25.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shane In Tech Life">
-<meta name="twitter:description" content="Shane&apos;s blog">
+<meta name="twitter:title" content="Javascript - 数组，对象数组，对象按字母顺序的排序的小技巧">
+<meta name="twitter:description" content="普通数组:1let fruits = [`bananas`, `Apples`, `Oranges`]; You can sort of alphabetize that as easy as:很简单，一行搞定： 1fruits.sort(); 但是要注意数组中不同字符串的大小写不一致… 大写的字符会被排在小写字符之前😂所以还有其他的步骤： 1234567let fruits = [`banan">
 
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://shenye.me/">
+  <link rel="canonical" href="http://shenye.me/2020/02/28/new/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>Shane In Tech Life</title>
+  <title>Javascript - 数组，对象数组，对象按字母顺序的排序的小技巧 | Shane In Tech Life</title>
   
 
 
@@ -172,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,7 +215,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -277,9 +277,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -311,10 +311,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/02/28/new/" class="post-title-link" itemprop="url">Javascript - 数组，对象数组，对象按字母顺序的排序的小技巧</a>
+          <h1 class="post-title" itemprop="name headline">Javascript - 数组，对象数组，对象按字母顺序的排序的小技巧
+
               
             
           </h1>
@@ -390,9 +388,7 @@
       
 
       
-        
-          
-            <h3 id="普通数组"><a href="#普通数组" class="headerlink" title="普通数组:"></a>普通数组:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">`bananas`</span>, <span class="string">`Apples`</span>, <span class="string">`Oranges`</span>];</span><br></pre></td></tr></table></figure>
+        <h3 id="普通数组"><a href="#普通数组" class="headerlink" title="普通数组:"></a>普通数组:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">`bananas`</span>, <span class="string">`Apples`</span>, <span class="string">`Oranges`</span>];</span><br></pre></td></tr></table></figure>
 <p>You can sort of alphabetize that as easy as:<br>很简单，一行搞定：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fruits.sort();</span><br></pre></td></tr></table></figure>
 <p><strong>但是</strong>要注意数组中不同字符串的大小写不一致… 大写的字符会被排在小写字符之前😂<br>所以还有其他的步骤：</p>
@@ -408,8 +404,6 @@
 <h3 id="对象数组（按对象键排序）"><a href="#对象数组（按对象键排序）" class="headerlink" title="对象数组（按对象键排序）"></a>对象数组（按对象键排序）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [</span><br><span class="line">  &#123;</span><br><span class="line">    Bananas: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    Apples: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    oranges: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 <p>可能这是上述情况中最复杂，但是结合所有的方法，其实也很简单🐶</p>
 
-          
-        
       
     </div>
 
@@ -430,14 +424,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript-array/" rel="tag"># Javascript, array</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -447,14 +447,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -474,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -534,6 +544,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通数组"><span class="nav-number">1.</span> <span class="nav-text">普通数组:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象数组（按对象键值排序）"><span class="nav-number">2.</span> <span class="nav-text">对象数组（按对象键值排序）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通对象"><span class="nav-number">3.</span> <span class="nav-text">普通对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象数组（按对象键排序）"><span class="nav-number">4.</span> <span class="nav-text">对象数组（按对象键排序）</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -662,6 +689,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -677,6 +708,8 @@
 
   
 
+
+  
 
 
   
