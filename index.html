@@ -294,6 +294,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/03/29/Azure Function Part I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/03/29/Azure Function Part I/" class="post-title-link" itemprop="url">·</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-29 20:55:10" itemprop="dateCreated datePublished" datetime="2020-03-29T20:55:10+08:00">2020-03-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-07 22:37:07" itemprop="dateModified" datetime="2020-04-07T22:37:07+08:00">2020-04-07</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说<a href="https://azure.microsoft.com/services/functions/" target="_blank" rel="noopener">Azure functions</a>之前先来说说Serverless。Serverless是最近很火的一个概念，它是一种基于互联网的技术架构理念，应用逻辑并非全部在服务端实现，而是采用FAAS（Function as a Service）架构，通过功能组合来实现应用程序逻辑。应用业务逻辑将基于FAAS架构形成独立为多个相互独立功能组件，并以API服务的形式向外提供服务；很多公司都在自己的云平台推出了FAAS，比如Amazon Lambda，Azure Function，Google Cloud Functions，阿里云Function Compute等。</p>
+<p>微软的Azure functions是基于Azure的无服务器计算服务，可以快速的帮助用户构建一个基于事件驱动的应用架构。用户无需关心服务器的部署运营，只需专注于核心的逻辑，既可以发布上线。费用按照实际调用次数与时长计费，自动缩放，仅在运行函数时为计算资源付费。更棒的是Azure Functions支持C#，Python，Javascript，TypeScript，F#和Java，本文带大家快速看在本地搭建Javascript开发环境开发Azure Functions。</p>
+<h2 id="环境安裝"><a href="#环境安裝" class="headerlink" title="环境安裝"></a>环境安裝</h2><p>可以使用<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a>和<a href="https://visualstudio.microsoft.com/" target="_blank" rel="noopener">Visual Studio</a>开发，本文将会使用的VS Code。</p>
+<p>首先在扩展市场中搜索Azure functions，你也可以直接安裝Azure App Service，这样你就拥有所有相关套件服务，也可以仅安裝Azure Functions。</p>
+<p><img src="/.me//Azure Function Ext.jpg" alt="fsdfs"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> propComparator = <span class="function">(<span class="params">propName</span>) =&gt;</span></span><br><span class="line">  (a, b) =&gt; a[propName].toLowerCase() == b[propName].toLowerCase() ? <span class="number">0</span> : a[propName].toLowerCase() &lt; b[propName].toLowerCase() ? <span class="number">-1</span> : <span class="number">1</span></span><br><span class="line">So now we can use it to sort:</span><br><span class="line"></span><br><span class="line">fruits.sort(propComparator(<span class="string">`fruit`</span>));</span><br><span class="line"><span class="built_in">console</span>.log(fruits);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#123;fruit: "apples"&#125;,</span></span><br><span class="line"><span class="comment">  &#123;fruit: "Bananas"&#125;,</span></span><br><span class="line"><span class="comment">  &#123;fruit: "Oranges"&#125;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="普通对象"><a href="#普通对象" class="headerlink" title="普通对象"></a>普通对象</h3><p>如果我们有个对象是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = &#123;</span><br><span class="line">  Bananas: <span class="literal">true</span>,</span><br><span class="line">  apples: <span class="literal">false</span>,</span><br><span class="line">  Oranges: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们依然可以将那些键小写化，然后我们先排序键的数组，然后用排序好的键数组建一个新对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sortedFruits = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.keys(fruits).sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a.toLowerCase().localeCompare(b.toLowerCase());</span><br><span class="line">&#125;).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  sortedFruits[key] = fruits[key];</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(sortedFruits);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  apples: false,</span></span><br><span class="line"><span class="comment">  Bananas: true,</span></span><br><span class="line"><span class="comment">  Oranges: true</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="对象数组（按对象键排序）"><a href="#对象数组（按对象键排序）" class="headerlink" title="对象数组（按对象键排序）"></a>对象数组（按对象键排序）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [</span><br><span class="line">  &#123;</span><br><span class="line">    Bananas: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    Apples: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    oranges: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>可能这是上述情况中最复杂，但是结合所有的方法，其实也很简单🐶</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/02/28/Javascript - 排序排序的小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -490,7 +656,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -507,7 +673,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
