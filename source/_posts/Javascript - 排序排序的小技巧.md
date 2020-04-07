@@ -1,5 +1,5 @@
 ---
-title: Javascript - 数组，对象数组，对象按字母顺序的排序的小技巧
+title: Javascript - 排序排序的小技巧
 date: 2020-02-28 19:34:40
 tags: Javascript, array
 ---
@@ -10,7 +10,6 @@ tags: Javascript, array
 let fruits = [`bananas`, `Apples`, `Oranges`];
 ```
 
-You can sort of alphabetize that as easy as:
 很简单，一行搞定：
 
 ``` javascript
