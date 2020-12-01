@@ -29,7 +29,7 @@ const reverseString = (string) => string.split('').reverse().join('');
 ```
 ## 方法2.使用For Of循环
 
-这是反向转换字符串的经典示例。我们在这里要做的是创建一个空字符串，该字符串将保留反向的strng，循环遍历字符串中的每个字符，并将其附加到新字符串的开头。
+这是反向转换字符串的经典示例。我们在这里要做的是创建一个空字符串，该字符串将保留反向的string，循环遍历字符串中的每个字符，并将其附加到新字符串的开头。
 
 ```javascript
 function reverse(str) {
@@ -42,7 +42,7 @@ function reverse(str) {
   return reverseString
 }
 ```
-## 方法2.使用Array.reduce()
+## 方法3.使用Array.reduce()
 
 [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)方法在数组的每个元素上执行reducer函数，从而产生单个输出值。要使用reduce方法，我们需要将字符串转换为数组。接下来，我们使用reduce方法将其转换为字符串。这样，reducer将字符串的每个字符附加到累加值，该累加器值就是反转的字符串。
 
