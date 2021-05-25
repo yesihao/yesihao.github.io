@@ -96,38 +96,18 @@
 
 
 
-  <meta name="description" content="前言本文将介绍部署Azure Function的完整过程。这一次会使用Node.js作为开发语言，以及使用VS Code作为编辑器。 在后面的博文中会写到如何提高Node.js Azure functions的性能。 进入正题首先在Azure portal上创建一个Function App然后选择使用VS Code做为开发环境。 我们先了解一些基本参数：  App name：functions群组">
-<meta name="keywords" content="Serverless, Azure, Azure Function, VS Code">
+  <meta name="description" content="前言React.createRef和React.useRef都可以用来创建可变对象，这个对象包含current属性，可以用来保存和引用一些值，并且修改这个属性不会触发组件更新。接下来聊它们的不同。 useRef vs createRefuseRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。首先hooks不能用在ClassCompnent中,">
+<meta name="keywords" content="React, createRef, useRef">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何使用VS Code快速部署Azure Function">
-<meta property="og:url" content="http://shenye.me/2020/05/05/Azure Function Part II/index.html">
+<meta property="og:title" content="React.useRef的用法">
+<meta property="og:url" content="http://shenye.me/2021/02/19/React.useRef的用法/index.html">
 <meta property="og:site_name" content="Shane In Tech Life">
-<meta property="og:description" content="前言本文将介绍部署Azure Function的完整过程。这一次会使用Node.js作为开发语言，以及使用VS Code作为编辑器。 在后面的博文中会写到如何提高Node.js Azure functions的性能。 进入正题首先在Azure portal上创建一个Function App然后选择使用VS Code做为开发环境。 我们先了解一些基本参数：  App name：functions群组">
+<meta property="og:description" content="前言React.createRef和React.useRef都可以用来创建可变对象，这个对象包含current属性，可以用来保存和引用一些值，并且修改这个属性不会触发组件更新。接下来聊它们的不同。 useRef vs createRefuseRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。首先hooks不能用在ClassCompnent中,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://shenye.me/images/如何使用VS%20Code如何快速部署Azure%20Function-1.jpg">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image19.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image12.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image13.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image22.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image23.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image9.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image8.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image15.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image18.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image21.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image4.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image6.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image14.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image20.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image3.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image16-1.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image7.png">
-<meta property="og:image" content="https://tangocode.com/wp-content/uploads/2019/09/image2.png">
-<meta property="og:updated_time" content="2020-05-09T07:22:03.504Z">
+<meta property="og:updated_time" content="2021-05-24T13:24:15.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何使用VS Code快速部署Azure Function">
-<meta name="twitter:description" content="前言本文将介绍部署Azure Function的完整过程。这一次会使用Node.js作为开发语言，以及使用VS Code作为编辑器。 在后面的博文中会写到如何提高Node.js Azure functions的性能。 进入正题首先在Azure portal上创建一个Function App然后选择使用VS Code做为开发环境。 我们先了解一些基本参数：  App name：functions群组">
-<meta name="twitter:image" content="http://shenye.me/images/如何使用VS%20Code如何快速部署Azure%20Function-1.jpg">
+<meta name="twitter:title" content="React.useRef的用法">
+<meta name="twitter:description" content="前言React.createRef和React.useRef都可以用来创建可变对象，这个对象包含current属性，可以用来保存和引用一些值，并且修改这个属性不会触发组件更新。接下来聊它们的不同。 useRef vs createRefuseRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。首先hooks不能用在ClassCompnent中,">
 
 
 
@@ -135,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://shenye.me/2020/05/05/Azure Function Part II/">
+  <link rel="canonical" href="http://shenye.me/2021/02/19/React.useRef的用法/">
 
 
 
@@ -145,7 +125,7 @@
   };
 </script>
 
-  <title>如何使用VS Code快速部署Azure Function | Shane In Tech Life</title>
+  <title>React.useRef的用法 | Shane In Tech Life</title>
   
 
 
@@ -314,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/05/05/Azure Function Part II/">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2021/02/19/React.useRef的用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shane Ye">
@@ -331,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">如何使用VS Code快速部署Azure Function
+          <h1 class="post-title" itemprop="name headline">React.useRef的用法
 
               
             
@@ -357,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2020-05-05 21:15:33" itemprop="dateCreated datePublished" datetime="2020-05-05T21:15:33+08:00">2020-05-05</time>
+              <time title="创建时间：2021-02-19 09:02:44" itemprop="dateCreated datePublished" datetime="2021-02-19T09:02:44+08:00">2021-02-19</time>
             
 
             
@@ -374,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-05-09 15:22:03" itemprop="dateModified" datetime="2020-05-09T15:22:03+08:00">2020-05-09</time>
+                <time title="修改时间：2021-05-24 21:24:15" itemprop="dateModified" datetime="2021-05-24T21:24:15+08:00">2021-05-24</time>
               
             
           </span>
@@ -408,39 +388,18 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文将介绍部署Azure Function的完整过程。这一次会使用<strong>Node.js</strong>作为开发语言，以及使用<strong>VS Code</strong>作为编辑器。<br><img src="/images/如何使用VS Code如何快速部署Azure Function-1.jpg" alt="如何使用VS Code如何快速部署Azure Function-1"></p>
-<p>在后面的博文中会写到如何提高Node.js Azure functions的性能。</p>
-<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h5 id="首先在Azure-portal上创建一个Function-App然后选择使用VS-Code做为开发环境。"><a href="#首先在Azure-portal上创建一个Function-App然后选择使用VS-Code做为开发环境。" class="headerlink" title="首先在Azure portal上创建一个Function App然后选择使用VS Code做为开发环境。"></a>首先在Azure portal上创建一个Function App然后选择使用<strong>VS Code</strong>做为开发环境。</h5><p><img src="https://tangocode.com/wp-content/uploads/2019/09/image19.png" alt="1"></p>
-<p>我们先了解一些基本参数：</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>React.createRef和React.useRef都可以用来创建可变对象，这个对象包含current属性，可以用来保存和引用一些值，并且修改这个属性不会触发组件更新。<br>接下来聊它们的不同。</p>
+<h2 id="useRef-vs-createRef"><a href="#useRef-vs-createRef" class="headerlink" title="useRef vs createRef"></a>useRef vs createRef</h2><p>useRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。<br>首先hooks不能用在ClassCompnent中, createRef在FunctionComponent是无效的，因为FunctionComponent每次更新createRef都会重新初始化，所以ref会会不不断改变，看下面代代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 错误用法，ref.current永远是null</span></span><br><span class="line">  <span class="keyword">const</span> ref = React.createRef();</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>useRef的用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ref.current 可以保存div的dom实例</span></span><br><span class="line">  <span class="keyword">const</span> ref = React.useRef();</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以使用callback ref保存dom实例。但是这个方法会有个<a href="https://reactjs.org/docs/refs-and-the-dom.html#caveats-with-callback-refs" target="_blank" rel="noopener">小问题</a>，官方文档也有说明。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;input type=<span class="string">"text"</span> ref=&#123;el =&gt; <span class="keyword">this</span>.inputRef = el&#125; /&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>useRef有两种用例：</p>
 <ol>
-<li>App name：functions群组的唯一名称。这也是资源最终URL的尾部。比如App name是example，URL就会是example.azurewebsites.net</li>
-<li>Subscription: 选择你的订阅</li>
-<li>Resource group &amp; version: 选择开发语言和版本</li>
-<li>OS: Windows是默认的选项，但是你也可以使用Linux</li>
-<li>Runtime stack: 我们选择node，版本选择10</li>
-<li>Publish: 发布类型，我们选择code</li>
-<li>Hosting plan: 现在一个消费计划，Azure Fuctions计费已次计算，很便宜。具体参考<a href="https://azure.microsoft.com/zh-cn/pricing/details/functions/" target="_blank" rel="noopener">Azure functions定价</a></li>
-<li>Location: 选择一个资源的位置，中国速度最快应该是东亚地区</li>
-<li>Application Insights: 用于记录日志定位问题<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image12.png" alt="xxxx"></li>
+<li>直接访问DOM节点以强制执行DOM操作</li>
+<li>在组件实例的整个生命周期中，在所有渲染器中保持一个值<br>与useEffect，useState和useCallback结合使用时，可以保留以前的状态。</li>
 </ol>
-<p>点击<strong>创建</strong>过几分钟之后，会提示创建成功。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image13.png" alt="xxxx"></p>
-<p>然后我们选择VS Code作为开发环境<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image22.png" alt="xxxx"></p>
-<p>提示我们需要安装所需工具，在上一篇博文中，我们介绍安装了开发Azure Functions的工具。这里不再赘述。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image23.png" alt="xxxx"></p>
-<p>我们推荐在VS Code中安装两个扩展：</p>
-<ol>
-<li>Azure Account: 整合Azure账户和VS Code.</li>
-<li>Azure Functions: 帮助我们创建，维护，管理，部署function<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image9.png" alt="xxxx"></li>
-</ol>
-<p>下一步我们登录的我们的Azure账号，然后我们就可以看到我们刚刚建立的Function App<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image8.png" alt="xxxx"></p>
-<p>现在可以使用Azure Functions扩展床一个HTTP trigger的function<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image15.png" alt="xxxx"></p>
-<p>然后输入Function名称，选择‘Function’作为缱绻等级<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image18.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image21.png" alt="xxxx"></p>
-<p>现在我们已经创建了一个function。主文件是index.js。这是一个模版，它接受一个get或post请求，在参数中如果有name字段，则返回“Hello ” + (req.query.name || req.body.name)，否则返回400错误.<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image4.png" alt="xxxx"></p>
-<p>另外一个重要的文件是function.json，它包含了一些配置。比较常用的配置是HTTP请求方式。你可以选择GET, POST, PUT, DELETE, OPTIONS等。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image6.png" alt="xxxx"></p>
-<h5 id="测试你的Function然后部署到Azure"><a href="#测试你的Function然后部署到Azure" class="headerlink" title="测试你的Function然后部署到Azure"></a>测试你的Function然后部署到Azure</h5><p>本地运行之后，我们可以断点进行调试。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image14.png" alt="xxxx"></p>
-<p>接下来我们要部署到这个function，选中function名称，右键，选择“Deploy to Function App…”<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image20.png" alt="xxxx"></p>
-<p>选择你想部署到的Fnction App<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image3.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image16-1.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image7.png" alt="xxxx"></p>
-<p>如果没有问题，我们可以收到一个部署成功的提示<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image2.png" alt="xxxx"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用VS Code开发是非常高效的，它集合Azure官方的扩展，所以很容易地本地开发和部署到Azure。</p>
+<p>最后，不要滥用 Ref，Mutable 引用越多，对 React 来说可维护性一般会越差。</p>
 
       
     </div>
@@ -464,7 +423,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Serverless-Azure-Azure-Function-VS-Code/" rel="tag"># Serverless, Azure, Azure Function, VS Code</a>
+            <a href="/tags/React-createRef-useRef/" rel="tag"># React, createRef, useRef</a>
           
         </div>
       
@@ -477,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/29/Azure Function Part I/" rel="next" title="Azure Functions - 配置开发环境">
-                <i class="fa fa-chevron-left"></i> Azure Functions - 配置开发环境
+              <a href="/2021/01/12/在React项目中使用Font-Awesome图标/" rel="next" title="在React项目中使用Font-Awesome图标">
+                <i class="fa fa-chevron-left"></i> 在React项目中使用Font-Awesome图标
               </a>
             
           </div>
@@ -487,8 +446,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/28/为什么React需要Hooks/" rel="prev" title="为什么React需要Hooks">
-                为什么React需要Hooks <i class="fa fa-chevron-right"></i>
+              <a href="/2021/03/11/iOS输入框自动放大，如何解决？/" rel="prev" title="iOS输入框自动放大，如何解决？">
+                iOS输入框自动放大，如何解决？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -637,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入正题"><span class="nav-number">2.</span> <span class="nav-text">进入正题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先在Azure-portal上创建一个Function-App然后选择使用VS-Code做为开发环境。"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">首先在Azure portal上创建一个Function App然后选择使用VS Code做为开发环境。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测试你的Function然后部署到Azure"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">测试你的Function然后部署到Azure</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#useRef-vs-createRef"><span class="nav-number">2.</span> <span class="nav-text">useRef vs createRef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
