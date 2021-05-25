@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Shane In Tech Life">
 <meta property="og:description" content="前言React.createRef和React.useRef都可以用来创建可变对象，这个对象包含current属性，可以用来保存和引用一些值，并且修改这个属性不会触发组件更新。接下来聊它们的不同。 useRef vs createRefuseRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。首先hooks不能用在ClassCompnent中,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-05-24T13:24:15.421Z">
+<meta property="og:updated_time" content="2021-05-25T15:35:33.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React.useRef的用法">
 <meta name="twitter:description" content="前言React.createRef和React.useRef都可以用来创建可变对象，这个对象包含current属性，可以用来保存和引用一些值，并且修改这个属性不会触发组件更新。接下来聊它们的不同。 useRef vs createRefuseRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。首先hooks不能用在ClassCompnent中,">
@@ -354,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-05-24 21:24:15" itemprop="dateModified" datetime="2021-05-24T21:24:15+08:00">2021-05-24</time>
+                <time title="修改时间：2021-05-25 23:35:33" itemprop="dateModified" datetime="2021-05-25T23:35:33+08:00">2021-05-25</time>
               
             
           </span>
@@ -389,7 +389,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>React.createRef和React.useRef都可以用来创建可变对象，这个对象包含current属性，可以用来保存和引用一些值，并且修改这个属性不会触发组件更新。<br>接下来聊它们的不同。</p>
-<h2 id="useRef-vs-createRef"><a href="#useRef-vs-createRef" class="headerlink" title="useRef vs createRef"></a>useRef vs createRef</h2><p>useRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。<br>首先hooks不能用在ClassCompnent中, createRef在FunctionComponent是无效的，因为FunctionComponent每次更新createRef都会重新初始化，所以ref会会不不断改变，看下面代代码</p>
+<h2 id="useRef-vs-createRef"><a href="#useRef-vs-createRef" class="headerlink" title="useRef vs createRef"></a>useRef vs createRef</h2><p>useRef仅能用在FunctionComponent，createRef仅能用在ClassComponent。<br>首先hooks不能用在ClassCompnent中, createRef在FunctionComponent是无效的，因为FunctionComponent每次更新createRef都会重新初始化，所以ref会不断改变，看下面代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 错误用法，ref.current永远是null</span></span><br><span class="line">  <span class="keyword">const</span> ref = React.createRef();</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>useRef的用法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ref.current 可以保存div的dom实例</span></span><br><span class="line">  <span class="keyword">const</span> ref = React.useRef();</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
