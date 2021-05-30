@@ -339,7 +339,7 @@
                 
               
 
-              <time title="创建时间：2021-05-30 20:55:16 / 修改时间：23:01:19" itemprop="dateCreated datePublished" datetime="2021-05-30T20:55:16+08:00">2021-05-30</time>
+              <time title="创建时间：2021-05-30 20:55:16 / 修改时间：23:03:19" itemprop="dateCreated datePublished" datetime="2021-05-30T20:55:16+08:00">2021-05-30</time>
             
 
             
@@ -380,11 +380,7 @@
       
         
           
-            <p>What are Portals? how and when to use it<br>React v16 introduced a new feature called portals. Portals provide a quick and easy way to render children into a DOM node that exists outside the DOM hierarchy of the parent component. React render the entire app under a single DOM node — the app root. But what if you want to render children outside the root DOM node? that’s when you use Portals.</p>
-<p>When<br>Two examples for doing this are when the parent element has styling (like a z-index pushing it to the front of the page or an overflow: hidden) but you want the child to visually appear on top of its container.</p>
-<p>How does it work<br>A portal can be anywhere in the DOM tree, it behaves like a normal React child in every other way. Features like context work exactly the same regardless of whether the child is a portal, as the portal still exists in the React tree regardless of position in the DOM tree. This includes event bubbling. An event fired from inside a portal will propagate to ancestors in the containing React tree, even if those elements are not ancestors in the DOM tree.</p>
-<p>Usage<br>I recommend it creating a component, and then using every time we need to. First, we need to create a DOM element (like the root element we created to append the app) in your index.html, this is where all the portals components are going to be attached.</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>什么是<em>Portals</em>？如何以及何时使用它<br>React v16 引入了一个称为<em>Portals</em>的新功能。 Portals 提供了一种快速简便的方法来将子组件渲染到存在于父组件的 DOM 层次结构之外的 DOM 节点中。 React 在单个 DOM 节点下渲染整个应用程序 - 应用程序根（root）。但是如果你想在根 DOM 节点之外渲染子节点怎么办？那是你使用<em>Portals</em>的时候。比如当父元素具有样式（如 z-index 将其推到页面的最前面或overflow: hidden）你又希望子元素在视觉上显示在其容器顶部时。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>什么是<em>Portals</em>？如何以及何时使用它<br>React v16 引入了一个称为<em>Portals</em>的新功能。 Portals 提供了一种快速简便的方法来将子组件渲染到存在于父组件的 DOM 层次结构之外的 DOM 节点中。 React 在单个 DOM 节点下渲染整个应用程序 - 应用程序根（root）。但是如果你想在根 DOM 节点之外渲染子节点怎么办？那是你使用<em>Portals</em>的时候。比如当父元素具有样式（如 z-index 将其推到页面的最前面或overflow: hidden）你又希望子元素在视觉上显示在其容器顶部时。</p>
 <h2 id="它是如何工作的"><a href="#它是如何工作的" class="headerlink" title="它是如何工作的"></a>它是如何工作的</h2><p><em>Portals</em>可以位于 DOM 树中的任何位置，它在其他方面的行为都像一个普通的 React 子节点。无论子节点是否是<em>Portals</em>，诸如上下文之类的功能都完全相同，因为无论在 DOM 树中的位置如何，<em>Portals</em>仍然存在于 React 树中。这包括事件冒泡。即使那些元素不是DOM树中的祖先，从<em>Portals</em>内部触发的事件也将传播到包含React的树中的祖先。</p>
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>我建议它创建一个组件，然后在每次需要时使用。首先，我们需要在 index.html 中创建一个 DOM 元素（就像我们为附加应用程序而创建的根元素），这是所有<em>Portals</em>组件将被挂载的地方。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"portal-components"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"root"</span>&gt;</span></span><br></pre></td></tr></table></figure>
