@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="前言在调试iOS表单的时候，发现点击输入框之后，屏幕会随着检点位置自动放大。但是在安卓中是不会的有这个问题的。 解决办法把&amp;lt;input /&amp;gt;的字体大小为16px或更大，则iOS上的Safari将正常聚焦到输入中。但是，当font-size等于或小于15px时，上述问题再次发生。大概是因为Safari认为该字体太小，希望用户看清楚自己在做什么。因此它会放大以帮助你使用辅助功能。所以如果你">
-<meta name="keywords" content="iOS, 放大, 表单">
+  <meta name="description" content="What are Portals? how and when to use itReact v16 introduced a new feature called portals. Portals provide a quick and easy way to render children into a DOM node that exists outside the DOM hierarchy">
+<meta name="keywords" content="React, React Portals">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS输入框自动放大，如何解决？">
-<meta property="og:url" content="http://shenye.me/2021/03/11/iOS输入框自动放大，如何解决？/index.html">
+<meta property="og:title" content="React Portals">
+<meta property="og:url" content="http://shenye.me/2021/05/30/React Portals/index.html">
 <meta property="og:site_name" content="Shane In Tech Life">
-<meta property="og:description" content="前言在调试iOS表单的时候，发现点击输入框之后，屏幕会随着检点位置自动放大。但是在安卓中是不会的有这个问题的。 解决办法把&amp;lt;input /&amp;gt;的字体大小为16px或更大，则iOS上的Safari将正常聚焦到输入中。但是，当font-size等于或小于15px时，上述问题再次发生。大概是因为Safari认为该字体太小，希望用户看清楚自己在做什么。因此它会放大以帮助你使用辅助功能。所以如果你">
+<meta property="og:description" content="What are Portals? how and when to use itReact v16 introduced a new feature called portals. Portals provide a quick and easy way to render children into a DOM node that exists outside the DOM hierarchy">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-05-25T15:34:55.504Z">
+<meta property="og:updated_time" content="2021-05-30T15:01:19.413Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS输入框自动放大，如何解决？">
-<meta name="twitter:description" content="前言在调试iOS表单的时候，发现点击输入框之后，屏幕会随着检点位置自动放大。但是在安卓中是不会的有这个问题的。 解决办法把&amp;lt;input /&amp;gt;的字体大小为16px或更大，则iOS上的Safari将正常聚焦到输入中。但是，当font-size等于或小于15px时，上述问题再次发生。大概是因为Safari认为该字体太小，希望用户看清楚自己在做什么。因此它会放大以帮助你使用辅助功能。所以如果你">
+<meta name="twitter:title" content="React Portals">
+<meta name="twitter:description" content="What are Portals? how and when to use itReact v16 introduced a new feature called portals. Portals provide a quick and easy way to render children into a DOM node that exists outside the DOM hierarchy">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://shenye.me/2021/03/11/iOS输入框自动放大，如何解决？/">
+  <link rel="canonical" href="http://shenye.me/2021/05/30/React Portals/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>iOS输入框自动放大，如何解决？ | Shane In Tech Life</title>
+  <title>React Portals | Shane In Tech Life</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shenye.me/2021/03/11/iOS输入框自动放大，如何解决？/">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2021/05/30/React Portals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shane Ye">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS输入框自动放大，如何解决？
+          <h1 class="post-title" itemprop="name headline">React Portals
 
               
             
@@ -337,24 +337,12 @@
                 
               
 
-              <time title="创建时间：2021-03-11 19:32:11" itemprop="dateCreated datePublished" datetime="2021-03-11T19:32:11+08:00">2021-03-11</time>
+              <time title="创建时间：2021-05-30 20:55:16 / 修改时间：23:01:19" itemprop="dateCreated datePublished" datetime="2021-05-30T20:55:16+08:00">2021-05-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-05-25 23:34:55" itemprop="dateModified" datetime="2021-05-25T23:34:55+08:00">2021-05-25</time>
               
             
           </span>
@@ -388,9 +376,20 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在调试iOS表单的时候，发现点击输入框之后，屏幕会随着检点位置自动放大。但是在安卓中是不会的有这个问题的。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>把<code>&lt;input /&gt;</code>的字体大小为16px或更大，则iOS上的Safari将正常聚焦到输入中。但是，当font-size等于或小于15px时，上述问题再次发生。大概是因为Safari认为该字体太小，希望用户看清楚自己在做什么。因此它会放大以帮助你使用辅助功能。所以如果你不想要这个效果，请使用足够大的字体。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的说，我还是喜欢这个功能。它可以帮助人们看清自己在做什么，并且不建议使用超小字体。</p>
+        <p>What are Portals? how and when to use it<br>React v16 introduced a new feature called portals. Portals provide a quick and easy way to render children into a DOM node that exists outside the DOM hierarchy of the parent component. React render the entire app under a single DOM node — the app root. But what if you want to render children outside the root DOM node? that’s when you use Portals.</p>
+<p>When<br>Two examples for doing this are when the parent element has styling (like a z-index pushing it to the front of the page or an overflow: hidden) but you want the child to visually appear on top of its container.</p>
+<p>How does it work<br>A portal can be anywhere in the DOM tree, it behaves like a normal React child in every other way. Features like context work exactly the same regardless of whether the child is a portal, as the portal still exists in the React tree regardless of position in the DOM tree. This includes event bubbling. An event fired from inside a portal will propagate to ancestors in the containing React tree, even if those elements are not ancestors in the DOM tree.</p>
+<p>Usage<br>I recommend it creating a component, and then using every time we need to. First, we need to create a DOM element (like the root element we created to append the app) in your index.html, this is where all the portals components are going to be attached.</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>什么是<em>Portals</em>？如何以及何时使用它<br>React v16 引入了一个称为<em>Portals</em>的新功能。 Portals 提供了一种快速简便的方法来将子组件渲染到存在于父组件的 DOM 层次结构之外的 DOM 节点中。 React 在单个 DOM 节点下渲染整个应用程序 - 应用程序根（root）。但是如果你想在根 DOM 节点之外渲染子节点怎么办？那是你使用<em>Portals</em>的时候。比如当父元素具有样式（如 z-index 将其推到页面的最前面或overflow: hidden）你又希望子元素在视觉上显示在其容器顶部时。</p>
+<h2 id="它是如何工作的"><a href="#它是如何工作的" class="headerlink" title="它是如何工作的"></a>它是如何工作的</h2><p><em>Portals</em>可以位于 DOM 树中的任何位置，它在其他方面的行为都像一个普通的 React 子节点。无论子节点是否是<em>Portals</em>，诸如上下文之类的功能都完全相同，因为无论在 DOM 树中的位置如何，<em>Portals</em>仍然存在于 React 树中。这包括事件冒泡。即使那些元素不是DOM树中的祖先，从<em>Portals</em>内部触发的事件也将传播到包含React的树中的祖先。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>我建议它创建一个组件，然后在每次需要时使用。首先，我们需要在 index.html 中创建一个 DOM 元素（就像我们为附加应用程序而创建的根元素），这是所有<em>Portals</em>组件将被挂载的地方。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"portal-components"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"root"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后创建Portal组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; PureComponent &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">'portal-components'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Portal</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.el = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    rootElement.appendChild(<span class="keyword">this</span>.el)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    rootElement.removeChild(<span class="keyword">this</span>.el)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> ReactDOM.createPortal(</span><br><span class="line">      <span class="keyword">this</span>.props.children,</span><br><span class="line">      <span class="keyword">this</span>.el</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Portal</span><br></pre></td></tr></table></figure>
+<p>最后这样使用它</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Portal&gt;</span><br><span class="line">  &#123;Everithing here is going to be attachaded outside the root DOM node&#125;</span><br><span class="line">&lt;<span class="regexp">/Portal&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Note<br>When using Portals, everything inside the <portal> component is going to be placed absolute to the screen, I recommend using CSS fixed positions to adjust alignments.</portal></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在使用<em>Portals</em>的时候，所有在<portal>组件中被渲染的子元素都会以就相对与屏幕绝对定位，我建议使用css：<em>display: fixed</em>来调整位置。</portal></p>
 
       
     </div>
@@ -414,7 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS-放大-表单/" rel="tag"># iOS, 放大, 表单</a>
+            <a href="/tags/React-React-Portals/" rel="tag"># React, React Portals</a>
           
         </div>
       
@@ -427,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/02/19/React.useRef的用法/" rel="next" title="React.useRef的用法">
-                <i class="fa fa-chevron-left"></i> React.useRef的用法
+              <a href="/2021/04/21/React实现计算属性的正确方式/" rel="next" title="React实现计算属性的正确方式">
+                <i class="fa fa-chevron-left"></i> React实现计算属性的正确方式
               </a>
             
           </div>
@@ -436,10 +435,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/04/21/React实现计算属性的正确方式/" rel="prev" title="React实现计算属性的正确方式">
-                React实现计算属性的正确方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#它是如何工作的"><span class="nav-number">2.</span> <span class="nav-text">它是如何工作的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">3.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li></ol></div>
             
 
           </div>
