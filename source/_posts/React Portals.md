@@ -62,4 +62,4 @@ export default Portal
 ```
 
 ## 注意
-在使用*Portals*的时候，所有在<Portal>组件中被渲染的子元素都会相对与屏幕绝对定位，我建议使用css：*display: fixed*来调整位置。
+在使用*Portals*的时候，所有在<Portal>组件中被渲染的子元素都会相对与屏幕绝对定位，我建议使用css：*position: fixed*来调整位置。
