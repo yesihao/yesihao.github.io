@@ -1,23 +1,899 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-{% block title %}{{ title }}{% if theme.index_with_subtitle and subtitle %} – {{ subtitle }}{% endif %}{% endblock %}
+<link rel="stylesheet" href="/css/main.css">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shenye.me","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+  <meta name="description" content="Shane&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shane In Tech Life">
+<meta property="og:url" content="http://shenye.me/page/2/index.html">
+<meta property="og:site_name" content="Shane In Tech Life">
+<meta property="og:description" content="Shane&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Shane Ye">
+<meta property="article:tag" content="Shaneye, Shane Ye, Shane, yesihao, 叶思浩">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://shenye.me/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Shane In Tech Life</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Shane In Tech Life</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">as above</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/08/29/%E4%BD%BF%E7%94%A8IntersectionObserver%E6%A3%80%E6%9F%A5%E9%A1%B5%E9%9D%A2%E6%98%AF%E5%90%A6%E6%BB%9A%E5%8A%A8%E5%88%B0%E7%89%B9%E5%AE%9A%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/29/%E4%BD%BF%E7%94%A8IntersectionObserver%E6%A3%80%E6%9F%A5%E9%A1%B5%E9%9D%A2%E6%98%AF%E5%90%A6%E6%BB%9A%E5%8A%A8%E5%88%B0%E7%89%B9%E5%AE%9A%E7%82%B9/" class="post-title-link" itemprop="url">使用IntersectionObserver检查页面是否滚动到特定点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-29 22:19:41" itemprop="dateCreated datePublished" datetime="2020-08-29T22:19:41+08:00">2020-08-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-15 21:20:39" itemprop="dateModified" datetime="2020-09-15T21:20:39+08:00">2020-09-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>网页滚动就是一个DOM事件。我可以使用window.scrollY随时查看窗口滚动了多远。我可以监听该事件并获取该数值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;scroll&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.scrollY)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>假设我想知道用户是否向下滚动了100px或更多，我可以通过判断window.Y &gt; 100来进行测试。这里，我将结果log出来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;scroll&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.scrollY &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Not past 100px&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Past 100px!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;pixel-to-watch&quot;</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>虽然它简单，易于理解且有效，但这是一个坏主意。因为这有点反模式，这种事件会发生很多次。当用户向下滚动页面时，它可以轻松触发几十，数百或数千次。每次这样做，我们都必须在JavaScript的单线程上运行。这意味着需要更多的时间来解决滚动问题，而花费较少的时间进行其他重要的事情。</p>
+<p>有很多方法可以减少这种强度，并且自然地，这是一个非常好的主意。Throttling和Debouncing是JavaScript中提高性能的良好模式。其要点是，在它们执行之前，它们阻止执行较大的JavaScript。</p>
+<p>不过，还有更好的方法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;pixel-to-watch&quot;</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#pixel-to-watch &#123;</span><br><span class="line">  <span class="attr">position</span>: absolute;</span><br><span class="line">  width: 1px;</span><br><span class="line">  height: 1px;</span><br><span class="line">  top: 100px;</span><br><span class="line">  left: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用IntersectionObserver:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> observer = <span class="keyword">new</span> IntersectionObserver(<span class="function"><span class="params">entries</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(entries);</span><br><span class="line">  <span class="keyword">if</span> (entries[<span class="number">0</span>].boundingClientRect.y &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Past 100px!&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Not past 100px&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">observer.observe(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#pixel-to-watch&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/07/30/%E5%8F%8D%E5%90%91%E5%AD%97%E7%AC%A6%E4%B8%B2%20-%20JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/30/%E5%8F%8D%E5%90%91%E5%AD%97%E7%AC%A6%E4%B8%B2%20-%20JavaScript/" class="post-title-link" itemprop="url">反向字符串 - JavaScript</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-30 18:29:11" itemprop="dateCreated datePublished" datetime="2020-07-30T18:29:11+08:00">2020-07-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-02 18:36:33" itemprop="dateModified" datetime="2021-02-02T18:36:33+08:00">2021-02-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>反向字符串问题是常见的算法问题。我们需要写一个反向字符串的函数，如果将“tom”传递给函数，则返回“mot”。在本文中，我们将考虑针对它的4个JavaScript解决方案。</p>
+<h2 id="方法1-使用数组reverse·方法"><a href="#方法1-使用数组reverse·方法" class="headerlink" title="方法1.使用数组reverse·方法"></a>方法1.使用数组reverse·方法</h2><p>有了Array.reverse() 方法，我们可以轻松地反转数组。 reverse() 方法将数组反转到位。但我们正在处理字符串，这意味着我们必须使用split方法将字符串转换为数组，使用reverse方法将其反向，并使用join方法将其转换回字符串。 这是代码示例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> array = string.split(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  array.reverse()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array.join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用箭头函数写成一行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverseString = <span class="function">(<span class="params">string</span>) =&gt;</span> string.split(<span class="string">&#x27;&#x27;</span>).reverse().join(<span class="string">&#x27;&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="方法2-使用For-Of循环"><a href="#方法2-使用For-Of循环" class="headerlink" title="方法2.使用For Of循环"></a>方法2.使用For Of循环</h2><p>这是反向转换字符串的经典示例。我们在这里要做的是创建一个空字符串，该字符串将保留反向的string，循环遍历字符串中的每个字符，并将其附加到新字符串的开头。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> reverseString = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> character <span class="keyword">of</span> str) &#123;</span><br><span class="line">    reverseString = character + reverseString;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> reverseString</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法3-使用Array-reduce"><a href="#方法3-使用Array-reduce" class="headerlink" title="方法3.使用Array.reduce()"></a>方法3.使用Array.reduce()</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">reduce</a>方法在数组的每个元素上执行reducer函数，从而产生单个输出值。要使用reduce方法，我们需要将字符串转换为数组。接下来，我们使用reduce方法将其转换为字符串。这样，reducer将字符串的每个字符附加到累加值，该累加器值就是反转的字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> array = string.split(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> reversedString = array.reduce(<span class="function">(<span class="params">reversed, character</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> character + reversed</span><br><span class="line">  &#125;, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> reversedString</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述函数也可以写成下面的形式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverseString = <span class="function">(<span class="params">string</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> string.split(<span class="string">&#x27;&#x27;</span>).reduce(<span class="function">(<span class="params">reversed, character</span>) =&gt;</span> character + reversed, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>甚至可以写成更短的单行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverseString = <span class="function">(<span class="params">string</span>) =&gt;</span> string.split(<span class="string">&#x27;&#x27;</span>).reduce(<span class="function">(<span class="params">rev, char</span>) =&gt;</span> char + rev, <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法4-使用递归"><a href="#方法4-使用递归" class="headerlink" title="方法4.使用递归"></a>方法4.使用递归</h2><p>你熟悉递归的吗？ 递归是一种通过使用调用自身的函数来解决问题的方法。每次函数调用自身时，它将问题减少为子问题。该递归调用继续进行，直到到达无需进一步递归。<br>你可以<a target="_blank" rel="noopener" href="https://dev.to/sloan/explain-recursion-like-im-five-5c6">参考</a>。</p>
+<p>首先我们使用string.substring（）方法获取删除字符串中的第一个字符，并将其他字符传递给函数。 然后，将第一个字符添加到return语句中，如下面的代码所示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">string</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(string === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> string</span><br><span class="line">  &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> reverse(string.substring(<span class="number">1</span>)) + string[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以使用三元操作符简化上述函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line"> 	<span class="keyword">return</span> string ? reverse(string.substring(<span class="number">1</span>)) + string[<span class="number">0</span>] : string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这样就可以用四种很酷的方法来反转JavaScript中的字符串。扎实的数据结构和算法知识来自许多实践，还有什么更好的方式欢迎留言。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/" class="post-title-link" itemprop="url">Azure Functions 连接 MongoDB</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-22 22:01:36" itemprop="dateCreated datePublished" datetime="2020-06-22T22:01:36+08:00">2020-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-14 00:11:26" itemprop="dateModified" datetime="2020-07-14T00:11:26+08:00">2020-07-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>无服务器架构计算变得越来越流行，但是，当使用无服务器架构来构建后端API时，经常会遇到一些小问题。使用无状态函数是否意味着必须在每次运行该函数时都建立与数据库的新连接？ 其实大多数问题都有解决方法，因此不必每次运行函数时花费额外的时间来连接数据库。所以今天准备写一下关于使用MongoDB驱动程序和mongoose与Azure Functions重复使用数据库连接的文章。本文将完成在Node.js中创建Azure Functions的过程，以及将该函数将连接到MongoDB并在请求之间重用数据库连接。</p>
+<h2 id="创建一个简单的Azure函数"><a href="#创建一个简单的Azure函数" class="headerlink" title="创建一个简单的Azure函数"></a>创建一个简单的Azure函数</h2><p>在之前的文章中已经讲解了如何创建Azure Functions，这里也不再赘述。首先我们在Azure Portal上创建一个Azure Function。<br>![创建好的Azure Function](/images/Azure Functions 连接 MongoDB1.jpg)</p>
+<h2 id="安装MongoDB驱动程序"><a href="#安装MongoDB驱动程序" class="headerlink" title="安装MongoDB驱动程序"></a>安装MongoDB驱动程序</h2><p>接下来让我们将该功能连接到数据库。在Azure Function中添加npm模块与在AWS Lambda的过程非常不同。使用Azure Functions，必须登录到服务器，然后创建package.json，然后运行npm install。对于“无服务器”架构来说，这似乎很奇怪，但是好处就是不必一遍又一遍地捆绑相同的依赖，也不必担心node_modules运行在Lambda对函数大小的限制。</p>
+<p>要安装MongoDB Node.js驱动程序，请首先转到<your-function-name>.scm.azurewebsites.net，然后单击“调试控制台”-&gt;“ PowerShell”。<br>![PowerShell](/images/Azure Functions 连接 MongoDB2.jpg)</your-function-name></p>
+<p>转到D:\home\site\wwwroot目录下，新建名为的package.json文件，增加MongoDB一览，最后保存。<br>![创建好package.json](/images/Azure Functions 连接 MongoDB3.jpg)</p>
+<p>执行<code>npm i</code><br>![执行<code>npm i</code>](/images/Azure Functions 连接 MongoDB4.jpg)</p>
+<p>回到Azure Function编辑界面，写入代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongodb = <span class="built_in">require</span>(<span class="string">&#x27;mongodb&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// URI for MongoDB Atlas xxx为省略 https://www.mongodb.com/cloud/atlas</span></span><br><span class="line"><span class="keyword">const</span> uri = <span class="string">&#x27;mongodb+srv://xxx.mongodb.net/test&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">context, req</span>) </span>&#123;</span><br><span class="line">  context.log(<span class="string">&#x27;Running&#x27;</span>);</span><br><span class="line">  mongodb.MongoClient.connect(uri, <span class="function"><span class="keyword">function</span>(<span class="params">error, client</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (error) &#123;</span><br><span class="line">      context.log(<span class="string">&#x27;Failed to connect&#x27;</span>);</span><br><span class="line">      context.res = &#123; <span class="attr">status</span>: <span class="number">500</span>, <span class="attr">body</span>: res.stack &#125;</span><br><span class="line">      <span class="keyword">return</span> context.done();</span><br><span class="line">    &#125;</span><br><span class="line">    context.log(<span class="string">&#x27;Connected&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    client.db(<span class="string">&#x27;test&#x27;</span>).collection(<span class="string">&#x27;tests&#x27;</span>).find().toArray(<span class="function"><span class="keyword">function</span>(<span class="params">error, docs</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        context.log(<span class="string">&#x27;Error running query&#x27;</span>);</span><br><span class="line">        context.res = &#123; <span class="attr">status</span>: <span class="number">500</span>, <span class="attr">body</span>: res.stack &#125;</span><br><span class="line">        <span class="keyword">return</span> context.done();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      context.log(<span class="string">&#x27;Success!&#x27;</span>);</span><br><span class="line">      context.res = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span> &#125;,</span><br><span class="line">        <span class="attr">body</span>: <span class="built_in">JSON</span>.stringify(&#123; <span class="attr">res</span>: docs &#125;)</span><br><span class="line">      &#125;;</span><br><span class="line">      context.done();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="重用数据库连接"><a href="#重用数据库连接" class="headerlink" title="重用数据库连接"></a>重用数据库连接</h2><p>但是每次该函数运行时创建一个新的数据库连接会降低性能。所以与Lambda一样，可以使用Node.js运行时的小技巧来保留调用之间的数据库连接。具体来说，脚本中的全局变量可能在函数调用之间保留，因此，如果向MongoDB客户端添加全局指针，则它将一直保留，直到它被Azure清除它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongodb = <span class="built_in">require</span>(<span class="string">&#x27;mongodb&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> uri = <span class="string">&#x27;mongodb+srv://xxx/test&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// May be retained between function executions depending on whether Azure</span></span><br><span class="line"><span class="comment">// cleans up memory</span></span><br><span class="line"><span class="keyword">let</span> client = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">context, req</span>) </span>&#123;</span><br><span class="line">  context.log(<span class="string">&#x27;Running&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> hasClient = client != <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (client == <span class="literal">null</span>) &#123;</span><br><span class="line">    mongodb.MongoClient.connect(uri, <span class="function"><span class="keyword">function</span>(<span class="params">error, _client</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        context.log(<span class="string">&#x27;Failed to connect&#x27;</span>);</span><br><span class="line">        context.res = &#123; <span class="attr">status</span>: <span class="number">500</span>, <span class="attr">body</span>: res.stack &#125;</span><br><span class="line">        <span class="keyword">return</span> context.done();</span><br><span class="line">      &#125;</span><br><span class="line">      client = _client;</span><br><span class="line">      context.log(<span class="string">&#x27;Connected&#x27;</span>);</span><br><span class="line">      query();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    query();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    client.db(<span class="string">&#x27;test&#x27;</span>).collection(<span class="string">&#x27;tests&#x27;</span>).find().toArray(<span class="function"><span class="keyword">function</span>(<span class="params">error, docs</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) &#123;</span><br><span class="line">        context.log(<span class="string">&#x27;Error running query&#x27;</span>);</span><br><span class="line">        context.res = &#123; <span class="attr">status</span>: <span class="number">500</span>, <span class="attr">body</span>: res.stack &#125;</span><br><span class="line">        <span class="keyword">return</span> context.done();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      context.log(<span class="string">&#x27;Success!&#x27;</span>);</span><br><span class="line">      context.res = &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span> &#125;,</span><br><span class="line">        <span class="attr">body</span>: <span class="string">&#x27;Num docs &#x27;</span> + docs.length + <span class="string">&#x27;, reused connection &#x27;</span> + hasClient</span><br><span class="line">      &#125;;</span><br><span class="line">      context.done();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>第一次运行会创杰数据库连接，第二次运行就会从全局变量中拿到以前的连接。很明显会更快。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>Azure Functions不需要您捆绑node_modules，而是让您在功能应用程序中的多个功能之间共享node_modules。<br>Azure Functions可以大规模执行代码，而不必担心置备和管理基础虚拟机和操作系统。MongoDB使开发人员能够快速将想法变为现实，而不会影响数据库的工作效率。 Azure平台和MongoDB一起为开发人员提供了一套快速开发的环境。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/05/28/%E4%B8%BA%E4%BB%80%E4%B9%88React%E9%9C%80%E8%A6%81Hooks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/28/%E4%B8%BA%E4%BB%80%E4%B9%88React%E9%9C%80%E8%A6%81Hooks/" class="post-title-link" itemprop="url">为什么React需要Hooks</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-28 10:24:23" itemprop="dateCreated datePublished" datetime="2020-05-28T10:24:23+08:00">2020-05-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-17 11:15:13" itemprop="dateModified" datetime="2020-06-17T11:15:13+08:00">2020-06-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你是一个React开发者，那么你经常会听到关于React hooks，也就是所说的<strong>钩子</strong>的讨论。而对于那些没有使用过React hooks的开发者来说，这只是React内置的函数，它们可以让我们让在functional组件内里做所有可以在class组件内做的事。</p>
+<p>但是为什么要使用React hooks呢？ 如果类组件可以完成我们希望它们做的所有事情，比如初始化状态，设置状态，访问组件的生命周期，创建上下文，调用引用等，那么我们为什么要为我们的展示性组件提供一种方法，做同样的事情呢？functional组件有什么特别之处？</p>
+<p>好吧，事实证明，使用钩子为开发人员带来好处的原因有很多。首先是大型组件可能难以使用，在大型项目上工作的开发者们，组件的状态可能会越来愈多，愈来愈复杂，其大小经常会在组件生命周期方法中散布相同或相似的逻辑。第二个是方法重用，重用组件方法（尤其是复杂的逻辑）依赖于设计模式，例如高阶组件或渲染参数，这反过来又需要开发人员重新组织其组件层次结构，并可能导致组件层级混乱。最后，类语法对卡发者和编译器都造成了混淆，并且可能导致React所追求的纯粹的功能设计模式无法实现。</p>
+<p>那么钩子如何解决这些问题呢？</p>
+<h2 id="组件大小"><a href="#组件大小" class="headerlink" title="组件大小"></a>组件大小</h2><p>当涉及到组件的规模，大小时，钩子使用useEffect提取生命周期方法中的许多重复功能，并使用useState初始化，改变状态。例如，一个useEffect挂钩可以完成3种生命周期方法的工作：componentDidMount，componentDidUpdate和componentWillUnmount。通过指定一个可选的依赖项数组，您可以告诉useEffect在指定的状态引用中查找更改，然后再次运行该效果，等效于componentDidUpdate。通过指定一个空的依赖关系数组，您可以告诉useEffect仅运行一次componentDidMount。当从DOM中删除组件时，您需要执行一些数据清除操作（例如清除间隔或阻止api调用），您可以在return语句中为useEffect回调，该语句将在unmount- componentWillUnmount上运行。所有这些工作都可以通过一个useEffect调用来完成，这使其成为解决副作用的强大方法！</p>
+<h2 id="方法复用"><a href="#方法复用" class="headerlink" title="方法复用"></a>方法复用</h2><p>在应用中其他地方重用组件逻辑时，我们概括这些方案的传统方式是使用渲染道具或HOC（高阶组件）。<br>渲染道具的工作方式是将带有独立JSX的自定义回调作为参数,传递给我们的组件。当我们希望相同的渲染组件的多个实例之间重用时，就可以这样。例如，如果我们想通过一个组件跟踪鼠标的位置，但想对该数据做不同的事情（例如在<strong>p</strong>标签而不是<strong>h1</strong>标签中显示位置），则可以通过指定渲染擦输来实现使用定制的JSX。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;MousePosition render = &#123;<span class="function"><span class="params">position</span> =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;position&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#125;&gt;&lt;/MousePosition&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">MousePosition</span> <span class="attr">render</span> = <span class="string">&#123;position</span> =&gt;</span> <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;position&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">MousePosition</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>HOC（高阶组件）通过创建包装器组件或返回包装器组件的函数来实现，该函数使包装的组件可以访问某些数据或功能。如果多个组件正在执行相似但略有不同的工作，例如从相同来源获取某些数据但使用不同方法，则我们将希望使用此功能。想想Redux的connect（）函数，它将包装好的组件连接到我们的商店。这里可能需要连接多个组件，但是状态和调度方法的需求却有所不同。因此，我们可以向我们的连接HOC提供自定义的mapStateToProps和mapDispatchToProps函数，以为包装的组件提供个性化数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(SomeComponent);</span><br></pre></td></tr></table></figure>
+
+<p>尽管这些模式对于类组件非常有效，但它们也有缺点。特别是，它们要求开发人员重写其组件层次结构，并可能导致包装器地狱的第9个循环。 React hooks的替代方法是允许我们的可以调用以自定义hook的形式在各​​个组件之间共享。自定义钩子只是可组合的函数，可以像其他任何函数一样在组件之间导出和共享。可组合的意思是指具有多个部分（例如useState和useEffect调用），将它们组合为可重用模式并将其抽象为自己的单独功能的能力。这种模式在类组件中将是不可能的，因为做诸如获取数据或实例化状态之类的简单操作不能与调用它们的类方法分开。</p>
+<h2 id="性能与困惑"><a href="#性能与困惑" class="headerlink" title="性能与困惑"></a>性能与困惑</h2><p>最后，大家对于类组件的性能其实没有什么担心。在2018年React Conference上，当React Hooks揭幕时，有人指出类组件对于机器和人类都很难理解。由于类语法只是JavaScript原型继承的一种语法糖，因此类的工作方式与其他编程语言不同。React团队注意到在生产环境中最小化类组件的问题，并且在实现热模块重新加载时存在不一致之处。此外，对于开发者，尤其是对那些刚接触类语法的开发者来说，可能很难理解’this’关键字的绑定是如何工作的，或者难以理解其他类的细微差别，例如在构造函数内部调用super（）的目的。</p>
+<p>由于React hooks使我们能够在功能组件内部使用所有相同的类组件功能，因此我们能够提高React代码的性能。此外，钩子具有简洁的语法，不仅与React的纯功能设计紧密相关，而且与JavaScript紧密相关。 React在其他基于组件的前端库（如Vue）之间的主要区别之一是它通过JSX和css模块将html，css和JavaScript耦合在一起。这意味着，如果你是JavaScript专家，那么您就是React（提供或获取实现细节）专家，而不是像过去那样依赖Vue在HTML，CSS和JS之间拆分文件的模板结构jQuery和Vanilla JS的DOM处理的概念。</p>
+<p>尽管功能组件的性能略有提高，但性能不应成为使用React hooks的主要原因。它也不会在React中添加尚不存在的任何功能。其主要目的只是简单地将功能组件提升到与类组件相同的级别，从而通过更干净，更可维护的代码，更好地在组件之间重用方法以及更简单，更具声明性的使用方式，从而获得更好的DX（开发人员体验）。</p>
+<p>话虽这么说，但我有一些同事发现React hooks在概念上不容易掌握，尤其是在了解useEffect，useState或useContext时。例如，很难看到应该如何将生命周期方法中的各种逻辑组合成单个函数调用。因此，最近，有开发者创建了一个称为<a target="_blank" rel="noopener" href="https://github.com/oslabs-beta/hookd">Hookd</a>的CLI模板工具，以将类组件立即转换为带有钩子的功能组件。</p>
+<h2 id="清理代码，理清思路"><a href="#清理代码，理清思路" class="headerlink" title="清理代码，理清思路"></a>清理代码，理清思路</h2><p>最后，使用React hooks似乎不仅仅是开发者“装x”的工具，它可以让开发人者清理自己的代码，进而理清自己的思路。所以不应低估简洁和声明性代码提高的可读性，开发效率和模块化且可维护的应用程序的重要性。在AI代替人类编程之前，我们必须遵循这些可以让打击都清楚理解的约束，这样才有助于项目壮大。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/05/05/Azure%20Function%20Part%20II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/Azure%20Function%20Part%20II/" class="post-title-link" itemprop="url">如何使用VS Code快速部署Azure Function</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-05 21:15:33" itemprop="dateCreated datePublished" datetime="2020-05-05T21:15:33+08:00">2020-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-09 15:22:03" itemprop="dateModified" datetime="2020-05-09T15:22:03+08:00">2020-05-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文将介绍部署Azure Function的完整过程。这一次会使用<strong>Node.js</strong>作为开发语言，以及使用<strong>VS Code</strong>作为编辑器。<br>![如何使用VS Code如何快速部署Azure Function-1](/images/如何使用VS Code如何快速部署Azure Function-1.jpg)</p>
+<p>在后面的博文中会写到如何提高Node.js Azure functions的性能。</p>
+<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h5 id="首先在Azure-portal上创建一个Function-App然后选择使用VS-Code做为开发环境。"><a href="#首先在Azure-portal上创建一个Function-App然后选择使用VS-Code做为开发环境。" class="headerlink" title="首先在Azure portal上创建一个Function App然后选择使用VS Code做为开发环境。"></a>首先在Azure portal上创建一个Function App然后选择使用<strong>VS Code</strong>做为开发环境。</h5><p><img src="https://tangocode.com/wp-content/uploads/2019/09/image19.png" alt="1"></p>
+<p>我们先了解一些基本参数：</p>
+<ol>
+<li>App name：functions群组的唯一名称。这也是资源最终URL的尾部。比如App name是example，URL就会是example.azurewebsites.net</li>
+<li>Subscription: 选择你的订阅</li>
+<li>Resource group &amp; version: 选择开发语言和版本</li>
+<li>OS: Windows是默认的选项，但是你也可以使用Linux</li>
+<li>Runtime stack: 我们选择node，版本选择10</li>
+<li>Publish: 发布类型，我们选择code</li>
+<li>Hosting plan: 现在一个消费计划，Azure Fuctions计费已次计算，很便宜。具体参考<a target="_blank" rel="noopener" href="https://azure.microsoft.com/zh-cn/pricing/details/functions/">Azure functions定价</a></li>
+<li>Location: 选择一个资源的位置，中国速度最快应该是东亚地区</li>
+<li>Application Insights: 用于记录日志定位问题<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image12.png" alt="xxxx"></li>
+</ol>
+<p>点击<strong>创建</strong>过几分钟之后，会提示创建成功。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image13.png" alt="xxxx"></p>
+<p>然后我们选择VS Code作为开发环境<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image22.png" alt="xxxx"></p>
+<p>提示我们需要安装所需工具，在上一篇博文中，我们介绍安装了开发Azure Functions的工具。这里不再赘述。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image23.png" alt="xxxx"></p>
+<p>我们推荐在VS Code中安装两个扩展：</p>
+<ol>
+<li>Azure Account: 整合Azure账户和VS Code.</li>
+<li>Azure Functions: 帮助我们创建，维护，管理，部署function<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image9.png" alt="xxxx"></li>
+</ol>
+<p>下一步我们登录的我们的Azure账号，然后我们就可以看到我们刚刚建立的Function App<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image8.png" alt="xxxx"></p>
+<p>现在可以使用Azure Functions扩展床一个HTTP trigger的function<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image15.png" alt="xxxx"></p>
+<p>然后输入Function名称，选择‘Function’作为缱绻等级<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image18.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image21.png" alt="xxxx"></p>
+<p>现在我们已经创建了一个function。主文件是index.js。这是一个模版，它接受一个get或post请求，在参数中如果有name字段，则返回“Hello ” + (req.query.name || req.body.name)，否则返回400错误.<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image4.png" alt="xxxx"></p>
+<p>另外一个重要的文件是function.json，它包含了一些配置。比较常用的配置是HTTP请求方式。你可以选择GET, POST, PUT, DELETE, OPTIONS等。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image6.png" alt="xxxx"></p>
+<h5 id="测试你的Function然后部署到Azure"><a href="#测试你的Function然后部署到Azure" class="headerlink" title="测试你的Function然后部署到Azure"></a>测试你的Function然后部署到Azure</h5><p>本地运行之后，我们可以断点进行调试。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image14.png" alt="xxxx"></p>
+<p>接下来我们要部署到这个function，选中function名称，右键，选择“Deploy to Function App…”<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image20.png" alt="xxxx"></p>
+<p>选择你想部署到的Fnction App<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image3.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image16-1.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image7.png" alt="xxxx"></p>
+<p>如果没有问题，我们可以收到一个部署成功的提示<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image2.png" alt="xxxx"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用VS Code开发是非常高效的，它集合Azure官方的扩展，所以很容易地本地开发和部署到Azure。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/03/29/Azure%20Function%20Part%20I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/29/Azure%20Function%20Part%20I/" class="post-title-link" itemprop="url">Azure Functions - 配置开发环境</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-29 20:55:10" itemprop="dateCreated datePublished" datetime="2020-03-29T20:55:10+08:00">2020-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-08 09:50:42" itemprop="dateModified" datetime="2020-04-08T09:50:42+08:00">2020-04-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说<a target="_blank" rel="noopener" href="https://azure.microsoft.com/services/functions/">Azure functions</a>之前先来说说Serverless。Serverless是最近很火的一个概念，它是一种基于互联网的技术架构理念，应用逻辑并非全部在服务端实现，而是采用FAAS（Function as a Service）架构，通过功能组合来实现应用程序逻辑。应用业务逻辑将基于FAAS架构形成独立为多个相互独立功能组件，并以API服务的形式向外提供服务；很多公司都在自己的云平台推出了FAAS，比如Amazon Lambda，Azure Function，Google Cloud Functions，阿里云Function Compute等。</p>
+<p>微软的Azure functions是基于Azure的无服务器计算服务，可以快速的帮助用户构建一个基于事件驱动的应用架构。用户无需关心服务器的部署运营，只需专注于核心的逻辑，既可以发布上线。费用按照实际调用次数与时长计费，自动缩放，仅在运行函数时为计算资源付费。更棒的是Azure Functions支持C#，Python，Javascript，TypeScript，F#和Java，本文带大家快速看在本地搭建Javascript开发环境开发Azure Functions。</p>
+<h2 id="环境安裝"><a href="#环境安裝" class="headerlink" title="环境安裝"></a>环境安裝</h2><p>可以使用<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a>和<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/">Visual Studio</a>开发，本文将会使用的VS Code。</p>
+<p>首先在扩展市场中搜索Azure functions，你也可以直接安裝Azure App Service，这样你就拥有所有相关扩展服务，也可以仅安裝Azure Functions。</p>
+<p>![Azure Function扩展](/images/Azure Function Ext.jpg)</p>
+<p>接著，我们要安裝 Azure Function Core Tools，在命令行安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#via npm</span></span><br><span class="line">npm i -g azure-functions-core-tools --unsafe-perm <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Linux</span></span><br><span class="line">wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb</span><br><span class="line">sudo dpkg -i packages-microsoft-prod.deb</span><br><span class="line"></span><br><span class="line"><span class="comment">#Mac</span></span><br><span class="line">brew tap azure/<span class="built_in">functions</span></span><br><span class="line">brew install azure-functions-core-tools</span><br></pre></td></tr></table></figure>
+
+<p>或者我们可以点击Debug | Run, VS Code会自动提示安装Azure Function Core Tools，确定后自动执行上方命令。</p>
+<p>![Azure Function Core Tools 自动安装](/images/Azure Function Debug1.jpg)</p>
+<p>安裝成功之后，我们可以在命令行输入 <strong>func</strong> 来检查是否安装成功。</p>
+<p>![Azure Function Core Tools 安装成功](/images/Azure Function Core Tools.jpg)</p>
+<p>出现 <strong>闪电</strong> 就说明安装成功了！</p>
+<p>##预告</p>
+<p>下一篇博文将会讲到 <strong>如何快速部署Azure Function</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/02/28/Javascript%20-%20%E6%8E%92%E5%BA%8F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/28/Javascript%20-%20%E6%8E%92%E5%BA%8F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">Javascript - 排序排序的小技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-28 19:34:40" itemprop="dateCreated datePublished" datetime="2020-02-28T19:34:40+08:00">2020-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-01 12:57:55" itemprop="dateModified" datetime="2020-04-01T12:57:55+08:00">2020-04-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="普通数组"><a href="#普通数组" class="headerlink" title="普通数组:"></a>普通数组:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">`bananas`</span>, <span class="string">`Apples`</span>, <span class="string">`Oranges`</span>];</span><br></pre></td></tr></table></figure>
+
+<p>很简单，一行搞定：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fruits.sort();</span><br></pre></td></tr></table></figure>
+
+<p><strong>但是</strong>要注意数组中不同字符串的大小写不一致… 大写的字符会被排在小写字符之前😂<br>所以还有其他的步骤：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [<span class="string">`bananas`</span>, <span class="string">`Apples`</span>, <span class="string">`Oranges`</span>];</span><br><span class="line">fruits.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a.toLowerCase().localeCompare(b.toLowerCase());</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(fruits);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [&quot;Apples&quot;, &quot;bananas&quot;, &quot;Oranges&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="对象数组（按对象键值排序）"><a href="#对象数组（按对象键值排序）" class="headerlink" title="对象数组（按对象键值排序）"></a>对象数组（按对象键值排序）</h3><p>对对象数组的排序会变得很稍微更复杂一些。经常我们会在处理JSON API的时候遇到。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">fruit</span>: <span class="string">`Bananas`</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">fruit</span>: <span class="string">`apples`</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">fruit</span>: <span class="string">`Oranges`</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>我们可以为此写一个排序函数，但是更进一步我们需要一个更通用的方法把需要排序的键以参数的形式传进去</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> propComparator = <span class="function">(<span class="params">propName</span>) =&gt;</span></span><br><span class="line">  <span class="function">(<span class="params">a, b</span>) =&gt;</span> a[propName].toLowerCase() == b[propName].toLowerCase() ? <span class="number">0</span> : a[propName].toLowerCase() &lt; b[propName].toLowerCase() ? -<span class="number">1</span> : <span class="number">1</span></span><br><span class="line">So now we can use it to sort:</span><br><span class="line"></span><br><span class="line">fruits.sort(propComparator(<span class="string">`fruit`</span>));</span><br><span class="line"><span class="built_in">console</span>.log(fruits);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">  &#123;fruit: &quot;apples&quot;&#125;,</span></span><br><span class="line"><span class="comment">  &#123;fruit: &quot;Bananas&quot;&#125;,</span></span><br><span class="line"><span class="comment">  &#123;fruit: &quot;Oranges&quot;&#125;</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="普通对象"><a href="#普通对象" class="headerlink" title="普通对象"></a>普通对象</h3><p>如果我们有个对象是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = &#123;</span><br><span class="line">  <span class="attr">Bananas</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">apples</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">Oranges</span>: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>我们依然可以将那些键小写化，然后我们先排序键的数组，然后用排序好的键数组建一个新对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sortedFruits = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.keys(fruits).sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a.toLowerCase().localeCompare(b.toLowerCase());</span><br><span class="line">&#125;).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">  sortedFruits[key] = fruits[key];</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(sortedFruits);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  apples: false,</span></span><br><span class="line"><span class="comment">  Bananas: true,</span></span><br><span class="line"><span class="comment">  Oranges: true</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="对象数组（按对象键排序）"><a href="#对象数组（按对象键排序）" class="headerlink" title="对象数组（按对象键排序）"></a>对象数组（按对象键排序）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">Bananas</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">Apples</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">oranges</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>可能这是上述情况中最复杂，但是结合所有的方法，其实也很简单🐶</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Shane Ye</p>
+  <div class="site-description" itemprop="description">Shane's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shane Ye</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
