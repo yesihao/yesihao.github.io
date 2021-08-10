@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?36cdc51609c26be7d6ab923d48be2ee6";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shenye.me","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言在开发人员的日常生活中，检查CSS并不常见，但有时不得不这样做。也许这是性能评估网页的一部分，为了找出关键的CSS并减少未使用的选择器。也许是为提高访问性，代码库中使用各种颜色对比突出。 无论情况如何，每当那一时刻到来时，我通常都会使用本文中将要介绍的一些工具。但在此之前，让我们首先看看“检查”CSS意味着什么。 检查CSS很困难一般来说，代码检查涉及分析代码以发现bug或其他不正常的地方，例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS的检查工具">
+<meta property="og:url" content="http://shenye.me/2021/07/20/CSS%E7%9A%84%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="Shane In Tech Life">
+<meta property="og:description" content="前言在开发人员的日常生活中，检查CSS并不常见，但有时不得不这样做。也许这是性能评估网页的一部分，为了找出关键的CSS并减少未使用的选择器。也许是为提高访问性，代码库中使用各种颜色对比突出。 无论情况如何，每当那一时刻到来时，我通常都会使用本文中将要介绍的一些工具。但在此之前，让我们首先看看“检查”CSS意味着什么。 检查CSS很困难一般来说，代码检查涉及分析代码以发现bug或其他不正常的地方，例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/09/fGtukR.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/09/fGGt7n.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/09/fGJevF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/09/fGYGon.png">
+<meta property="article:published_time" content="2021-07-20T12:11:39.000Z">
+<meta property="article:modified_time" content="2021-08-10T00:55:54.250Z">
+<meta property="article:author" content="Shane Ye">
+<meta property="article:tag" content="CSS, Audit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/09/fGtukR.png">
+
+<link rel="canonical" href="http://shenye.me/2021/07/20/CSS%E7%9A%84%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS的检查工具 | Shane In Tech Life</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Shane In Tech Life</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">as above</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2021/07/20/CSS%E7%9A%84%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS的检查工具
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-20 20:11:39" itemprop="dateCreated datePublished" datetime="2021-07-20T20:11:39+08:00">2021-07-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-10 08:55:54" itemprop="dateModified" datetime="2021-08-10T08:55:54+08:00">2021-08-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发人员的日常生活中，检查CSS并不常见，但有时不得不这样做。也许这是性能评估网页的一部分，为了找出关键的CSS并减少未使用的选择器。也许是为提高访问性，代码库中使用各种颜色对比突出。</p>
+<p>无论情况如何，每当那一时刻到来时，我通常都会使用本文中将要介绍的一些工具。但在此之前，让我们首先看看“检查”CSS意味着什么。</p>
+<h2 id="检查CSS很困难"><a href="#检查CSS很困难" class="headerlink" title="检查CSS很困难"></a>检查CSS很困难</h2><p>一般来说，代码检查涉及分析代码以发现bug或其他不正常的地方，例如可能的性能问题。对于大多数编程语言来说，审核代码的概念相对简单:它是否有效。但是CSS是一种特殊的语言，在这种语言中，错误大多会被浏览器忽略。事实上，你可以通过许多不同的方式实现相同的风格。至少可以说，这使得CSS的检查有点棘手。</p>
+<p>通过为您喜欢的代码编辑器使用扩展或设置检查器或代码检查器，可以防止发现这些错误。但这不是我想在这里展示的，这还不够。我们仍然可能会使用太多的颜色、排版定义或z-index，所有这些都可能导致CSS代码库混乱、不可维护、不稳定。</p>
+<p>为了真正检查CSS，我们需要更深入地挖掘并找到那些是最佳的做法。为了找到这些做法，我们可以使用以下工具。</p>
+<h3 id="浏览器开发工具"><a href="#浏览器开发工具" class="headerlink" title="浏览器开发工具"></a>浏览器开发工具</h3><p>让我们看看用于CSS检查的Chrome 开发工具。</p>
+<p>如果您喜欢手动检查CSS代码，可以使用Inspect工具。通过使用它，我们可以看到应用到特定元素的CSS代码。使用“检查箭头”，我们甚至可以看到关于颜色、字体、大小和可访问性的更多详细信息。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGtukR.png" alt="浏览器开发工具"></p>
+<h3 id="CSS-Overview"><a href="#CSS-Overview" class="headerlink" title="CSS Overview"></a>CSS Overview</h3><p>检查 CSS 是非常基础的，一切都需要手动完成。让我们看看一些更高级的 DevTools 功能。</p>
+<p><em>CSS Overview</em>就是其中之一。要启用 <em>CSS Overview</em>工具，请转到“设置”，单击“实验”，然后启用“<em>CSS Overview</em>”选项。要打开 <em>CSS Overview</em>面板，您可以使用 CMD+Shift+P 快捷键，输入“<em>CSS Overview</em>”，然后选择“显示 <em>CSS Overview</em>”。这个工具总结了 CSS 属性，如颜色、字体、对比度、未使用的声明和媒体查询。我通常使用这个工具来简单判断CSS代码的好坏。例如，如果有“50 级灰度”或太多的排版定义，这意味着风格指南没有得到遵循。</p>
+<h3 id="Coverage-panel"><a href="#Coverage-panel" class="headerlink" title="Coverage panel"></a>Coverage panel</h3><p>覆盖面板<br>覆盖率工具显示页面上使用的代码量和百分比。要查看它，可以使用 CMD+Shift+P 快捷键，键入“coverage”，选择“Show Coverage”，然后单击“refresh”图标。</p>
+<p>也可以通过在 URL 过滤器输入中键入“.css”来仅过滤 CSS 文件。我通常使用这个工具来了解网站使用的技术。例如，如果我看到覆盖率非常高，我可以假设 CSS 文件是为每个页面单独生成的。它可能不是关键数据，但有时它有助于理解网站的缓存策略。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGGt7n.png" alt="Coverage panel"></p>
+<h3 id="Rendering-Panel"><a href="#Rendering-Panel" class="headerlink" title="Rendering Panel"></a>Rendering Panel</h3><p>渲染面板是另一个有用的工具。要打开渲染面板，再次使用 CMD+Shift+P，这次输入“rendering”，然后选择“Show Rendering”选项。这个工具有很多选项，但我最喜欢的是：</p>
+<ul>
+<li>Paint flashing — 在发生重绘事件时显示绿色矩形。我用它来识别渲染时间过长的区域。</li>
+<li>Layout Shift Regions — 当布局移动发生时 显示蓝色矩形。为了充分利用这些选项，我通常在“网络”选项卡下设置“慢速 3G”预设。我有时会录制我的屏幕，然后放慢视频速度以找到布局变化。</li>
+</ul>
+<p>其他选项可能更有助于调试问题，例如模拟和禁用各种功能、强制使用首选颜色方案功能或打印介质类型以及禁用本地字体。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGJevF.png" alt="Rendering Panel"></p>
+<h3 id="Performance-Monitor"><a href="#Performance-Monitor" class="headerlink" title="Performance Monitor"></a>Performance Monitor</h3><p>性能监视器<br>另一个用于检查性能 CSS 代码的工具是性能监视器。要启用它，再次使用 CMD+Shift+P，键入“performance monitor”，然后选择“显示性能监视器”选项。我通常使用这个工具来查看在与页面交互时或动画发生时触发了多少重新计算和布局。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGYGon.png" alt="Performance Monitor"></p>
+<h3 id="Perfomance-panel"><a href="#Perfomance-panel" class="headerlink" title="Perfomance panel"></a>Perfomance panel</h3><p>“性能”面板显示页面加载期间所有浏览器事件的详细视图。要启用性能工具，请执行 CMD+Shift+P，键入“性能”，选择“显示性能”，然后单击“重新加载”图标。我通常启用“屏幕截图”和“Web Vitals”选项。对我来说最有趣的指标是 First Paint、First Contentful Paint、Layout Shifts 和 Largest Contentful Paint。还有一个饼图显示绘画和渲染时间。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>CSS无处不在，我们需要把它视为每个项目的一等公民。别人怎么看你的CSS并不重要，重要的是你怎么看它。如果你的CSS井然有序并且编写良好，那么您将花费更少的时间调试它，从而得以花更多的时间开发新功能。在理想的世界中，我们会教育每个人写好的CSS，但这需要时间。</p>
+<p>让今天成为你开始关心CSS代码的日子。</p>
+<p>我知道不是每个人都喜欢检查CSS。但是，如果在这些工具上运行代码，并试图改进CSS代码库的哪怕一部分，那么本文就完成了它的工作。</p>
+<p>如果你知道任何其他工具，请在评论中告诉我。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS-Audit/" rel="tag"># CSS, Audit</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/29/Azure%20DevOps%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2React%E5%BA%94%E7%94%A8%E5%88%B0Azure%20App%20Service/" rel="prev" title="Azure DevOps自动化部署React应用到Azure App Service">
+      <i class="fa fa-chevron-left"></i> Azure DevOps自动化部署React应用到Azure App Service
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5CSS%E5%BE%88%E5%9B%B0%E9%9A%BE"><span class="nav-number">2.</span> <span class="nav-text">检查CSS很困难</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器开发工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Overview"><span class="nav-number">2.2.</span> <span class="nav-text">CSS Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Coverage-panel"><span class="nav-number">2.3.</span> <span class="nav-text">Coverage panel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rendering-Panel"><span class="nav-number">2.4.</span> <span class="nav-text">Rendering Panel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance-Monitor"><span class="nav-number">2.5.</span> <span class="nav-text">Performance Monitor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perfomance-panel"><span class="nav-number">2.6.</span> <span class="nav-text">Perfomance panel</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Shane Ye</p>
+  <div class="site-description" itemprop="description">Shane's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shane Ye</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
