@@ -158,6 +158,81 @@ var _hmt = _hmt || [];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/10/06/classList()%20API%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/06/classList()%20API%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">classList() API简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-06 13:02:12" itemprop="dateCreated datePublished" datetime="2020-10-06T13:02:12+08:00">2020-10-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-02 21:30:26" itemprop="dateModified" datetime="2021-02-02T21:30:26+08:00">2021-02-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前为了操纵DOM元素class列表，经常会引入jQuery之类的库。其实html5的classList API还是非常方便的，而且兼容性也不错。</p>
+<h2 id="API用法"><a href="#API用法" class="headerlink" title="API用法"></a>API用法</h2><p>假设我们有这样一个DOM元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;el&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>获取DOM元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> el = <span class="built_in">document</span>.querySelector(<span class="string">&quot;#el&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然后你可以用classList方法操纵该元素上所有的类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加一个类</span></span><br><span class="line">el.classList.add(<span class="string">&quot;open&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加多个类</span></span><br><span class="line">el.classList.add(<span class="string">&quot;this&quot;</span>, <span class="string">&quot;little&quot;</span>, <span class="string">&quot;piggy&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> classes = [<span class="string">&quot;is-message&quot;</span>, <span class="string">&quot;is-warning&quot;</span>];</span><br><span class="line">el.classList.add(...classes);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除一个类</span></span><br><span class="line">el.classList.remove(<span class="string">&quot;open&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除多个类</span></span><br><span class="line">el.classList.remove(<span class="string">&quot;this&quot;</span>, <span class="string">&quot;little&quot;</span>, <span class="string">&quot;piggy&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历每个类</span></span><br><span class="line">el.classList.forEach(<span class="function"><span class="params">className</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 不要使用“class”作为变量名，因为这是保留字</span></span><br><span class="line">  <span class="built_in">console</span>.log(className);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> className <span class="keyword">of</span> $<span class="number">0.</span>classList) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(className);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">el.classList.length; <span class="comment">// 获取类的个数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换类</span></span><br><span class="line">el.classList.replace(<span class="string">&quot;is-big&quot;</span>, <span class="string">&quot;is-small&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切换一个类（如果存在，则将其删除，如果不存在，则将其添加）</span></span><br><span class="line">el.classList.toggle(<span class="string">&quot;open&quot;</span>);</span><br><span class="line"><span class="comment">// 删除类</span></span><br><span class="line">el.classList.toggle(<span class="string">&quot;open&quot;</span>, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">// 增加类</span></span><br><span class="line">el.classList.toggle(<span class="string">&quot;open&quot;</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看各个类是否存在</span></span><br><span class="line">el.classList.contains(<span class="string">&quot;open&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按顺序查看每个类：&lt;div class=&quot;hot dog&quot;&gt;</span></span><br><span class="line">el.classList.item(<span class="number">0</span>); <span class="comment">// hot</span></span><br><span class="line">el.classList.item(<span class="number">1</span>); <span class="comment">// dog</span></span><br><span class="line">el.classList.item(<span class="number">2</span>); <span class="comment">// null</span></span><br><span class="line">el.classList[<span class="number">1</span>]; <span class="comment">// dog</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p><img src="/images/classListAPI1.jpg" alt=".classList() API简介"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/09/23/%E5%B1%82%E5%8F%A0%E7%BA%B8%E6%95%88%E6%9E%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -889,12 +964,12 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
