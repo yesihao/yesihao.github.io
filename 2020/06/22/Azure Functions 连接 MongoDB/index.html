@@ -26,13 +26,13 @@ var _hmt = _hmt || [];
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"shenye.me","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"yesihao.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="前言无服务器架构计算变得越来越流行，但是，当使用无服务器架构来构建后端API时，经常会遇到一些小问题。使用无状态函数是否意味着必须在每次运行该函数时都建立与数据库的新连接？ 其实大多数问题都有解决方法，因此不必每次运行函数时花费额外的时间来连接数据库。所以今天准备写一下关于使用MongoDB驱动程序和mongoose与Azure Functions重复使用数据库连接的文章。本文将完成在Node.j">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure Functions 连接 MongoDB">
-<meta property="og:url" content="http://shenye.me/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/index.html">
+<meta property="og:url" content="http://yesihao.com/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/index.html">
 <meta property="og:site_name" content="Shane In Tech Life">
 <meta property="og:description" content="前言无服务器架构计算变得越来越流行，但是，当使用无服务器架构来构建后端API时，经常会遇到一些小问题。使用无状态函数是否意味着必须在每次运行该函数时都建立与数据库的新连接？ 其实大多数问题都有解决方法，因此不必每次运行函数时花费额外的时间来连接数据库。所以今天准备写一下关于使用MongoDB驱动程序和mongoose与Azure Functions重复使用数据库连接的文章。本文将完成在Node.j">
 <meta property="og:locale" content="zh_CN">
@@ -42,7 +42,7 @@ var _hmt = _hmt || [];
 <meta property="article:tag" content="Serverless, Azure, Azure Function, MongoDB">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://shenye.me/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/">
+<link rel="canonical" href="http://yesihao.com/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/">
 
 
 <script id="page-configurations">
@@ -161,7 +161,7 @@ var _hmt = _hmt || [];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://shenye.me/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/06/22/Azure%20Functions%20%E8%BF%9E%E6%8E%A5%20MongoDB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
