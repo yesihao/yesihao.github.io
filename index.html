@@ -158,6 +158,87 @@ var _hmt = _hmt || [];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/11/24/%E9%80%9A%E8%BF%87%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82%E6%9B%B4%E5%A5%BD%E5%9C%B0%E5%8D%8F%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/24/%E9%80%9A%E8%BF%87%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82%E6%9B%B4%E5%A5%BD%E5%9C%B0%E5%8D%8F%E4%BD%9C/" class="post-title-link" itemprop="url">通过拉取请求更好地协作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-24 19:16:55" itemprop="dateCreated datePublished" datetime="2021-11-24T19:16:55+08:00">2021-11-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-06 22:54:11" itemprop="dateModified" datetime="2021-12-06T22:54:11+08:00">2021-12-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><em>Pull Request</em> 拉取请求——这是一项对小型和大型开发团队都有帮助的强大功能。拉取请求不仅可以改进审查和反馈过程，而且还有助于跟踪和讨论代码更改。最后但并非最不重要的一点是，它是为你没有写入权限的其他存储库做出贡献的理想方式。</p>
+<h2 id="什么是拉取请求？"><a href="#什么是拉取请求？" class="headerlink" title="什么是拉取请求？"></a>什么是拉取请求？</h2><p>首先，要明白拉取请求并不是 Git 的核心功能。相反，它们是由你使用的 Git 托管平台提供的： GitHub、GitLab、Bit bucket、AzureDevops 和其他一些平台都内置了这样的功能。</p>
+<h2 id="为什么要创建拉取请求？"><a href="#为什么要创建拉取请求？" class="headerlink" title="为什么要创建拉取请求？"></a>为什么要创建拉取请求？</h2><p>在我们详细了解如何创建完美的拉取请求之前，让我们先谈谈你为什么会想要使用此功能。</p>
+<p>想象一下，你刚刚完成了软件的一项新功能。也许你一直在一个功能分支中工作，所以你的下一步是将它合并到主线分支（master或main）。这在某些情况下没有任何问题，例如，你是项目中唯一的开发人员，或者你有足够的经验并且知道你的团队成员肯定会对此感到高兴。<br>但是，如果你的更改有点复杂并且你希望其他人查看你的工作怎么办？这就是拉取请求的目的，通过拉取请求，你可以邀请其他人审查你的工作并向你提供反馈。<br>拉取请求打开后，你可以与其他开发人员讨论你的代码。大多数 Git 托管平台允许其他用户在此过程中添加评论并提出更改建议。在你的审阅者批准你的工作后，它可能会合并到另一个分支中。</p>
+<p>但是，拥有审查工作流程并不是拉取请求的唯一原因。如果你想为你没有写入权限的其他存储库做出贡献，它们会派上用场。想想那里的所有开源项目，如果你有一个新功能的想法，或者如果你想提交补丁，拉取请求是一种很好的方式来表达你的想法，而无需加入项目并成为主要贡献者。<br>这将我们带到了一个与拉取请求紧密相关的主题：forks。</p>
+<h2 id="使用forks工作"><a href="#使用forks工作" class="headerlink" title="使用forks工作"></a>使用forks工作</h2><p>forks是现有Git仓库的个人副本。回到我们的开源示例：你的第一步是创建原始存储库的分支。之后，你可以在自己的个人副本中更改代码。<br>完成后，你打开一个拉取请求，要求原始存储库的所有者包含你的更改。所有者或其他主要贡献者之一可以查看你的代码，然后决定包含（或不包含）它。<br>让审阅者的生活更轻松：如何创建出色的拉取请求<br>如前所述，拉取请求不是 Git 的核心功能。相反，每个 Git 平台都有自己的设计和关于拉取请求应该如何工作的想法。它们在 GitLab、GitHub、Bitbucket 等上看起来不同。每个平台都有略微不同的跟踪、讨论和审查更改的工作流程。</p>
+<p>例如，像Tower Git 客户端这样的桌面GUI可以使这变得更容易：它们提供一致的用户界面，无论你使用什么代码托管服务。</p>
+<h3 id="话虽如此，一般工作流程始终相同，包括以下步骤："><a href="#话虽如此，一般工作流程始终相同，包括以下步骤：" class="headerlink" title="话虽如此，一般工作流程始终相同，包括以下步骤："></a>话虽如此，一般工作流程始终相同，包括以下步骤：</h3><ul>
+<li>如果你没有相关存储库的写入权限，第一步是创建一个分支，即你的存储库的个人版本。</li>
+<li>在你的分叉存储库中创建一个新的本地分支。（提醒：拉取请求基于分支，而不是提交！）</li>
+<li>在你的本地分支中进行一些更改并提交。</li>
+<li>将更改推送到你自己的远程存储库。</li>
+<li>使用你的更改创建拉取请求并开始与其他人讨论。</li>
+</ul>
+<p>让我们看看拉取请求本身以及如何创建一个让其他开发人员的生活更轻松的请求。首先，它应该很短，以便可以快速查看。当查看 3,000 行而不是 30 行时，更难理解代码。<br>此外，请确保添加一个良好且不言自明的标题和有意义的描述。尝试描述什么，你变了，为什么你开拉入请求，以及如何更改影响的项目。大多数平台都允许你添加有助于演示更改的屏幕截图。</p>
+<h2 id="批准、合并还是拒绝？"><a href="#批准、合并还是拒绝？" class="headerlink" title="批准、合并还是拒绝？"></a>批准、合并还是拒绝？</h2><p>一旦你的更改获得批准，你（或具有写入权限的人）就可以将分叉分支合并到主分支中。但是如果审阅者不想合并当前状态的拉取请求怎么办？好吧，你总是可以添加新的提交，在推送那个分支之后，现有的拉取请求就会更新。或者，所有者或其他具有写入权限的人可以在他们不想合并更改时拒绝拉取请求。</p>
+<h2 id="开发商的安全网"><a href="#开发商的安全网" class="headerlink" title="开发商的安全网"></a>开发商的安全网</h2><p>如你所见，拉取请求是与开发人员同事交流和协作的好方法。通过请其他人审查你的工作，你可以确保只有高质量的代码才能进入你的代码库。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/10/26/JS%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E3%80%81%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E3%80%81%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1030,94 +1111,6 @@ var _hmt = _hmt || [];
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/01/12/%E5%9C%A8React%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8Font-Awesome%E5%9B%BE%E6%A0%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shane Ye">
-      <meta itemprop="description" content="Shane's blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shane In Tech Life">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/12/%E5%9C%A8React%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8Font-Awesome%E5%9B%BE%E6%A0%87/" class="post-title-link" itemprop="url">在React项目中使用Font-Awesome图标</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-12 20:22:11" itemprop="dateCreated datePublished" datetime="2021-01-12T20:22:11+08:00">2021-01-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-25 23:38:08" itemprop="dateModified" datetime="2021-05-25T23:38:08+08:00">2021-05-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你曾经不得不在网页上显示某种图标，那你和可能就使用或看过Font Awesome。 Font Awesome是一个很棒的图标库，它还提供了一个不错的React组件，所以在React程序中使用非常简单。</p>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>为了快速搭建项目，我们使用<a target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app">create-react-app</a>。</p>
-<h2 id="安装-Font-Awesome"><a href="#安装-Font-Awesome" class="headerlink" title="安装 Font-Awesome"></a>安装 Font-Awesome</h2><p>真棒字体<br>启动React应用程序后，我们需要安装Font Awesome提供的库：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">＃SVG渲染库</span><br><span class="line">npm我 --save fortawesome / fontawesome-svg-core</span><br><span class="line">＃Font Awesome提供的图标集</span><br><span class="line">npm install --save fortawesome / free-solid-svg-icons</span><br><span class="line">＃我们将使用的实际React组件</span><br><span class="line">npm install --save fortawesome / react-fontawesome</span><br></pre></td></tr></table></figure>
-<p>这将安装所有必要的部件，接下来就可以使用了。还可以安装许多其他样式不同的图标集，包括Pro图标。这里我们只使用纯风格的免费图标。</p>
-<blockquote>
-<p>注意：要使用Pro图标，需要一个付费的Pro帐户。</p>
-</blockquote>
-<h2 id="使用图标"><a href="#使用图标" class="headerlink" title="使用图标"></a>使用图标</h2><p>现在，让我们打开App.js文件。它只包含JSX create-react-app提供的样板。我们先删除标头标签中的所有内容，保留有些样式，以便后续开发。</p>
-<p>我们将需要导入我们安装的FontAwesomeIcon组件和一个SVG Icon进行渲染，然后使用fa-rocket图标。</p>
-<p>SVG图案一般用于在图图形对象内部定义形状，创建一个新形状并用图案填充它。一个SVG元素或是位图图像，都可以通过<pattern>元素在x轴或y轴方向以固定的间隔平铺。<br>下面会展示几个的简单SVG形状的。这个列表可能会随着时间的推移而增长，但是要想拥有一个全面的集合，可以在这基础上创造新图案。</pattern></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./App.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Font Awesome Imports</span></span><br><span class="line"><span class="keyword">import</span> &#123; faRocket &#125; <span class="keyword">from</span> <span class="string">&#x27;@fortawesome/free-solid-svg-icons&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; FontAwesomeIcon &#125; <span class="keyword">from</span> <span class="string">&#x27;@fortawesome/react-fontawesome&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">FontAwesomeIcon</span> <span class="attr">icon</span>=<span class="string">&#123;faRocket&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置图标库"><a href="#设置图标库" class="headerlink" title="设置图标库"></a>设置图标库</h2><p>如果我们要使用大量图标，要怎么做呢？<br>其实我们不须要在要使用它们的任何地方重新导入，Font Awesome提供了一种创建图标库的方法，该图标库在导入后可在全球范围内使用。<br>要进行设置，我们首先创建一个名为fontawesome.js的新文件。我们将库设置添加到此文件中。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Import the library</span></span><br><span class="line"><span class="keyword">import</span> &#123; library &#125; <span class="keyword">from</span> <span class="string">&#x27;@fortawesome/fontawesome-svg-core&#x27;</span></span><br><span class="line"><span class="comment">// Import whichever icons you want to use</span></span><br><span class="line"><span class="keyword">import</span> &#123; faRocket, faHome &#125; <span class="keyword">from</span> <span class="string">&#x27;@fortawesome/free-solid-svg-icons&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Add the icons to your library</span></span><br><span class="line">library.add(</span><br><span class="line">    faRocket,</span><br><span class="line">    faHome</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：你也可以从“ @ fortawesome / free-solid-svg-icons”中将*作为图标导入； 并将它们映射到您的库中以获取所有图标，但是打包之后非常大！ 最好只选择需要的那些。</p>
-</blockquote>
-<p>这就是库的所有设置！唯一改变的是渲染<FontAwesomeIcon>组件时我们如何指定图标。 让我们看下App.js文件</FontAwesomeIcon></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./App.css&#x27;</span>;</span><br><span class="line"><span class="comment">// NOTICE we don&#x27;t need to import the individual icons!</span></span><br><span class="line"><span class="keyword">import</span> &#123; FontAwesomeIcon &#125; <span class="keyword">from</span> <span class="string">&#x27;@fortawesome/react-fontawesome&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">header</span> <span class="attr">className</span>=<span class="string">&quot;App-header&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">FontAwesomeIcon</span> <span class="attr">icon</span>=<span class="string">&#123;[</span>&#x27;<span class="attr">fa</span>&#x27;, &#x27;<span class="attr">rocket</span>&#x27;]&#125; /&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">FontAwesomeIcon</span> <span class="attr">icon</span>=<span class="string">&#123;[</span>&#x27;<span class="attr">fa</span>&#x27;, &#x27;<span class="attr">home</span>&#x27;]&#125; /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>现在，你可以在整个应用中随意使用图标了。</p>
-<p>我强烈建议配置Font Awesome文档中介绍的其他选项和属性去配置图标库，然后再使用这些图标！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1187,12 +1180,12 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

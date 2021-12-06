@@ -158,6 +158,85 @@ var _hmt = _hmt || [];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/03/29/Azure%20Function%20Part%20I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/29/Azure%20Function%20Part%20I/" class="post-title-link" itemprop="url">Azure Functions - 配置开发环境</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-29 20:55:10" itemprop="dateCreated datePublished" datetime="2020-03-29T20:55:10+08:00">2020-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-08 09:50:42" itemprop="dateModified" datetime="2020-04-08T09:50:42+08:00">2020-04-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说<a target="_blank" rel="noopener" href="https://azure.microsoft.com/services/functions/">Azure functions</a>之前先来说说Serverless。Serverless是最近很火的一个概念，它是一种基于互联网的技术架构理念，应用逻辑并非全部在服务端实现，而是采用FAAS（Function as a Service）架构，通过功能组合来实现应用程序逻辑。应用业务逻辑将基于FAAS架构形成独立为多个相互独立功能组件，并以API服务的形式向外提供服务；很多公司都在自己的云平台推出了FAAS，比如Amazon Lambda，Azure Function，Google Cloud Functions，阿里云Function Compute等。</p>
+<p>微软的Azure functions是基于Azure的无服务器计算服务，可以快速的帮助用户构建一个基于事件驱动的应用架构。用户无需关心服务器的部署运营，只需专注于核心的逻辑，既可以发布上线。费用按照实际调用次数与时长计费，自动缩放，仅在运行函数时为计算资源付费。更棒的是Azure Functions支持C#，Python，Javascript，TypeScript，F#和Java，本文带大家快速看在本地搭建Javascript开发环境开发Azure Functions。</p>
+<h2 id="环境安裝"><a href="#环境安裝" class="headerlink" title="环境安裝"></a>环境安裝</h2><p>可以使用<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a>和<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/">Visual Studio</a>开发，本文将会使用的VS Code。</p>
+<p>首先在扩展市场中搜索Azure functions，你也可以直接安裝Azure App Service，这样你就拥有所有相关扩展服务，也可以仅安裝Azure Functions。</p>
+<p>![Azure Function扩展](/images/Azure Function Ext.jpg)</p>
+<p>接著，我们要安裝 Azure Function Core Tools，在命令行安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#via npm</span></span><br><span class="line">npm i -g azure-functions-core-tools --unsafe-perm <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Linux</span></span><br><span class="line">wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb</span><br><span class="line">sudo dpkg -i packages-microsoft-prod.deb</span><br><span class="line"></span><br><span class="line"><span class="comment">#Mac</span></span><br><span class="line">brew tap azure/<span class="built_in">functions</span></span><br><span class="line">brew install azure-functions-core-tools</span><br></pre></td></tr></table></figure>
+
+<p>或者我们可以点击Debug | Run, VS Code会自动提示安装Azure Function Core Tools，确定后自动执行上方命令。</p>
+<p>![Azure Function Core Tools 自动安装](/images/Azure Function Debug1.jpg)</p>
+<p>安裝成功之后，我们可以在命令行输入 <strong>func</strong> 来检查是否安装成功。</p>
+<p>![Azure Function Core Tools 安装成功](/images/Azure Function Core Tools.jpg)</p>
+<p>出现 <strong>闪电</strong> 就说明安装成功了！</p>
+<p>##预告</p>
+<p>下一篇博文将会讲到 <strong>如何快速部署Azure Function</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/02/28/Javascript%20-%20%E6%8E%92%E5%BA%8F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -310,12 +389,12 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?36cdc51609c26be7d6ab923d48be2ee6";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yesihao.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Pull Request 拉取请求——这是一项对小型和大型开发团队都有帮助的强大功能。拉取请求不仅可以改进审查和反馈过程，而且还有助于跟踪和讨论代码更改。最后但并非最不重要的一点是，它是为你没有写入权限的其他存储库做出贡献的理想方式。 什么是拉取请求？首先，要明白拉取请求并不是 Git 的核心功能。相反，它们是由你使用的 Git 托管平台提供的： GitHub、GitLab、Bit bucket、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过拉取请求更好地协作">
+<meta property="og:url" content="http://yesihao.com/2021/11/24/%E9%80%9A%E8%BF%87%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82%E6%9B%B4%E5%A5%BD%E5%9C%B0%E5%8D%8F%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Shane In Tech Life">
+<meta property="og:description" content="Pull Request 拉取请求——这是一项对小型和大型开发团队都有帮助的强大功能。拉取请求不仅可以改进审查和反馈过程，而且还有助于跟踪和讨论代码更改。最后但并非最不重要的一点是，它是为你没有写入权限的其他存储库做出贡献的理想方式。 什么是拉取请求？首先，要明白拉取请求并不是 Git 的核心功能。相反，它们是由你使用的 Git 托管平台提供的： GitHub、GitLab、Bit bucket、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-24T11:16:55.000Z">
+<meta property="article:modified_time" content="2021-12-06T14:54:11.429Z">
+<meta property="article:author" content="Shane Ye">
+<meta property="article:tag" content="git, Pull Request, 协作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yesihao.com/2021/11/24/%E9%80%9A%E8%BF%87%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82%E6%9B%B4%E5%A5%BD%E5%9C%B0%E5%8D%8F%E4%BD%9C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>通过拉取请求更好地协作 | Shane In Tech Life</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Shane In Tech Life</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">as above</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/11/24/%E9%80%9A%E8%BF%87%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82%E6%9B%B4%E5%A5%BD%E5%9C%B0%E5%8D%8F%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          通过拉取请求更好地协作
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-24 19:16:55" itemprop="dateCreated datePublished" datetime="2021-11-24T19:16:55+08:00">2021-11-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-06 22:54:11" itemprop="dateModified" datetime="2021-12-06T22:54:11+08:00">2021-12-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em>Pull Request</em> 拉取请求——这是一项对小型和大型开发团队都有帮助的强大功能。拉取请求不仅可以改进审查和反馈过程，而且还有助于跟踪和讨论代码更改。最后但并非最不重要的一点是，它是为你没有写入权限的其他存储库做出贡献的理想方式。</p>
+<h2 id="什么是拉取请求？"><a href="#什么是拉取请求？" class="headerlink" title="什么是拉取请求？"></a>什么是拉取请求？</h2><p>首先，要明白拉取请求并不是 Git 的核心功能。相反，它们是由你使用的 Git 托管平台提供的： GitHub、GitLab、Bit bucket、AzureDevops 和其他一些平台都内置了这样的功能。</p>
+<h2 id="为什么要创建拉取请求？"><a href="#为什么要创建拉取请求？" class="headerlink" title="为什么要创建拉取请求？"></a>为什么要创建拉取请求？</h2><p>在我们详细了解如何创建完美的拉取请求之前，让我们先谈谈你为什么会想要使用此功能。</p>
+<p>想象一下，你刚刚完成了软件的一项新功能。也许你一直在一个功能分支中工作，所以你的下一步是将它合并到主线分支（master或main）。这在某些情况下没有任何问题，例如，你是项目中唯一的开发人员，或者你有足够的经验并且知道你的团队成员肯定会对此感到高兴。<br>但是，如果你的更改有点复杂并且你希望其他人查看你的工作怎么办？这就是拉取请求的目的，通过拉取请求，你可以邀请其他人审查你的工作并向你提供反馈。<br>拉取请求打开后，你可以与其他开发人员讨论你的代码。大多数 Git 托管平台允许其他用户在此过程中添加评论并提出更改建议。在你的审阅者批准你的工作后，它可能会合并到另一个分支中。</p>
+<p>但是，拥有审查工作流程并不是拉取请求的唯一原因。如果你想为你没有写入权限的其他存储库做出贡献，它们会派上用场。想想那里的所有开源项目，如果你有一个新功能的想法，或者如果你想提交补丁，拉取请求是一种很好的方式来表达你的想法，而无需加入项目并成为主要贡献者。<br>这将我们带到了一个与拉取请求紧密相关的主题：forks。</p>
+<h2 id="使用forks工作"><a href="#使用forks工作" class="headerlink" title="使用forks工作"></a>使用forks工作</h2><p>forks是现有Git仓库的个人副本。回到我们的开源示例：你的第一步是创建原始存储库的分支。之后，你可以在自己的个人副本中更改代码。<br>完成后，你打开一个拉取请求，要求原始存储库的所有者包含你的更改。所有者或其他主要贡献者之一可以查看你的代码，然后决定包含（或不包含）它。<br>让审阅者的生活更轻松：如何创建出色的拉取请求<br>如前所述，拉取请求不是 Git 的核心功能。相反，每个 Git 平台都有自己的设计和关于拉取请求应该如何工作的想法。它们在 GitLab、GitHub、Bitbucket 等上看起来不同。每个平台都有略微不同的跟踪、讨论和审查更改的工作流程。</p>
+<p>例如，像Tower Git 客户端这样的桌面GUI可以使这变得更容易：它们提供一致的用户界面，无论你使用什么代码托管服务。</p>
+<h3 id="话虽如此，一般工作流程始终相同，包括以下步骤："><a href="#话虽如此，一般工作流程始终相同，包括以下步骤：" class="headerlink" title="话虽如此，一般工作流程始终相同，包括以下步骤："></a>话虽如此，一般工作流程始终相同，包括以下步骤：</h3><ul>
+<li>如果你没有相关存储库的写入权限，第一步是创建一个分支，即你的存储库的个人版本。</li>
+<li>在你的分叉存储库中创建一个新的本地分支。（提醒：拉取请求基于分支，而不是提交！）</li>
+<li>在你的本地分支中进行一些更改并提交。</li>
+<li>将更改推送到你自己的远程存储库。</li>
+<li>使用你的更改创建拉取请求并开始与其他人讨论。</li>
+</ul>
+<p>让我们看看拉取请求本身以及如何创建一个让其他开发人员的生活更轻松的请求。首先，它应该很短，以便可以快速查看。当查看 3,000 行而不是 30 行时，更难理解代码。<br>此外，请确保添加一个良好且不言自明的标题和有意义的描述。尝试描述什么，你变了，为什么你开拉入请求，以及如何更改影响的项目。大多数平台都允许你添加有助于演示更改的屏幕截图。</p>
+<h2 id="批准、合并还是拒绝？"><a href="#批准、合并还是拒绝？" class="headerlink" title="批准、合并还是拒绝？"></a>批准、合并还是拒绝？</h2><p>一旦你的更改获得批准，你（或具有写入权限的人）就可以将分叉分支合并到主分支中。但是如果审阅者不想合并当前状态的拉取请求怎么办？好吧，你总是可以添加新的提交，在推送那个分支之后，现有的拉取请求就会更新。或者，所有者或其他具有写入权限的人可以在他们不想合并更改时拒绝拉取请求。</p>
+<h2 id="开发商的安全网"><a href="#开发商的安全网" class="headerlink" title="开发商的安全网"></a>开发商的安全网</h2><p>如你所见，拉取请求是与开发人员同事交流和协作的好方法。通过请其他人审查你的工作，你可以确保只有高质量的代码才能进入你的代码库。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git-Pull-Request-%E5%8D%8F%E4%BD%9C/" rel="tag"># git, Pull Request, 协作</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/26/JS%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E3%80%81%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E3%80%81%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" rel="prev" title="JS 中的事件绑定、事件监听、事件委托是什么？">
+      <i class="fa fa-chevron-left"></i> JS 中的事件绑定、事件监听、事件委托是什么？
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是拉取请求？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA%E6%8B%89%E5%8F%96%E8%AF%B7%E6%B1%82%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">为什么要创建拉取请求？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8forks%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">使用forks工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%9D%E8%99%BD%E5%A6%82%E6%AD%A4%EF%BC%8C%E4%B8%80%E8%88%AC%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%A7%8B%E7%BB%88%E7%9B%B8%E5%90%8C%EF%BC%8C%E5%8C%85%E6%8B%AC%E4%BB%A5%E4%B8%8B%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">话虽如此，一般工作流程始终相同，包括以下步骤：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%B9%E5%87%86%E3%80%81%E5%90%88%E5%B9%B6%E8%BF%98%E6%98%AF%E6%8B%92%E7%BB%9D%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">批准、合并还是拒绝？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E5%95%86%E7%9A%84%E5%AE%89%E5%85%A8%E7%BD%91"><span class="nav-number">5.</span> <span class="nav-text">开发商的安全网</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Shane Ye</p>
+  <div class="site-description" itemprop="description">Shane's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shane Ye</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
