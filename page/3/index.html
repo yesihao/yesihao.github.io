@@ -158,6 +158,103 @@ var _hmt = _hmt || [];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/05/05/Azure%20Function%20Part%20II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/05/Azure%20Function%20Part%20II/" class="post-title-link" itemprop="url">如何使用VS Code快速部署Azure Function</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-05 21:15:33" itemprop="dateCreated datePublished" datetime="2020-05-05T21:15:33+08:00">2020-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-09 15:22:03" itemprop="dateModified" datetime="2020-05-09T15:22:03+08:00">2020-05-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文将介绍部署Azure Function的完整过程。这一次会使用<strong>Node.js</strong>作为开发语言，以及使用<strong>VS Code</strong>作为编辑器。<br>![如何使用VS Code如何快速部署Azure Function-1](/images/如何使用VS Code如何快速部署Azure Function-1.jpg)</p>
+<p>在后面的博文中会写到如何提高Node.js Azure functions的性能。</p>
+<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h5 id="首先在Azure-portal上创建一个Function-App然后选择使用VS-Code做为开发环境。"><a href="#首先在Azure-portal上创建一个Function-App然后选择使用VS-Code做为开发环境。" class="headerlink" title="首先在Azure portal上创建一个Function App然后选择使用VS Code做为开发环境。"></a>首先在Azure portal上创建一个Function App然后选择使用<strong>VS Code</strong>做为开发环境。</h5><p><img src="https://tangocode.com/wp-content/uploads/2019/09/image19.png" alt="1"></p>
+<p>我们先了解一些基本参数：</p>
+<ol>
+<li>App name：functions群组的唯一名称。这也是资源最终URL的尾部。比如App name是example，URL就会是example.azurewebsites.net</li>
+<li>Subscription: 选择你的订阅</li>
+<li>Resource group &amp; version: 选择开发语言和版本</li>
+<li>OS: Windows是默认的选项，但是你也可以使用Linux</li>
+<li>Runtime stack: 我们选择node，版本选择10</li>
+<li>Publish: 发布类型，我们选择code</li>
+<li>Hosting plan: 现在一个消费计划，Azure Fuctions计费已次计算，很便宜。具体参考<a target="_blank" rel="noopener" href="https://azure.microsoft.com/zh-cn/pricing/details/functions/">Azure functions定价</a></li>
+<li>Location: 选择一个资源的位置，中国速度最快应该是东亚地区</li>
+<li>Application Insights: 用于记录日志定位问题<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image12.png" alt="xxxx"></li>
+</ol>
+<p>点击<strong>创建</strong>过几分钟之后，会提示创建成功。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image13.png" alt="xxxx"></p>
+<p>然后我们选择VS Code作为开发环境<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image22.png" alt="xxxx"></p>
+<p>提示我们需要安装所需工具，在上一篇博文中，我们介绍安装了开发Azure Functions的工具。这里不再赘述。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image23.png" alt="xxxx"></p>
+<p>我们推荐在VS Code中安装两个扩展：</p>
+<ol>
+<li>Azure Account: 整合Azure账户和VS Code.</li>
+<li>Azure Functions: 帮助我们创建，维护，管理，部署function<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image9.png" alt="xxxx"></li>
+</ol>
+<p>下一步我们登录的我们的Azure账号，然后我们就可以看到我们刚刚建立的Function App<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image8.png" alt="xxxx"></p>
+<p>现在可以使用Azure Functions扩展床一个HTTP trigger的function<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image15.png" alt="xxxx"></p>
+<p>然后输入Function名称，选择‘Function’作为缱绻等级<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image18.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image21.png" alt="xxxx"></p>
+<p>现在我们已经创建了一个function。主文件是index.js。这是一个模版，它接受一个get或post请求，在参数中如果有name字段，则返回“Hello ” + (req.query.name || req.body.name)，否则返回400错误.<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image4.png" alt="xxxx"></p>
+<p>另外一个重要的文件是function.json，它包含了一些配置。比较常用的配置是HTTP请求方式。你可以选择GET, POST, PUT, DELETE, OPTIONS等。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image6.png" alt="xxxx"></p>
+<h5 id="测试你的Function然后部署到Azure"><a href="#测试你的Function然后部署到Azure" class="headerlink" title="测试你的Function然后部署到Azure"></a>测试你的Function然后部署到Azure</h5><p>本地运行之后，我们可以断点进行调试。<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image14.png" alt="xxxx"></p>
+<p>接下来我们要部署到这个function，选中function名称，右键，选择“Deploy to Function App…”<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image20.png" alt="xxxx"></p>
+<p>选择你想部署到的Fnction App<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image3.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image16-1.png" alt="xxxx"><br><img src="https://tangocode.com/wp-content/uploads/2019/09/image7.png" alt="xxxx"></p>
+<p>如果没有问题，我们可以收到一个部署成功的提示<br><img src="https://tangocode.com/wp-content/uploads/2019/09/image2.png" alt="xxxx"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用VS Code开发是非常高效的，它集合Azure官方的扩展，所以很容易地本地开发和部署到Azure。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/03/29/Azure%20Function%20Part%20I/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,12 +486,12 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
