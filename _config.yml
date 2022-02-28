@@ -80,4 +80,4 @@ theme: next
 deploy:
   type: git
   repo: git@github.com:yesihao/yesihao.github.io.git
-  branch: master
+  branch: gh-pages
