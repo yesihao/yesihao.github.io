@@ -158,6 +158,100 @@ var _hmt = _hmt || [];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2022/01/16/%E9%9D%99%E8%B0%A7%E7%9A%84CSS%E6%96%91%E9%A9%B3%E7%81%AF%E5%85%89%E6%95%88%E6%9E%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/16/%E9%9D%99%E8%B0%A7%E7%9A%84CSS%E6%96%91%E9%A9%B3%E7%81%AF%E5%85%89%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">静谧的CSS斑驳灯光效果</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-16 18:44:11" itemprop="dateCreated datePublished" datetime="2022-01-16T18:44:11+08:00">2022-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-28 22:45:41" itemprop="dateModified" datetime="2022-02-28T22:45:41+08:00">2022-02-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>傍晚的阳光透过沙沙作响的树叶照射进来，给人宁静而温暖的感觉。许多艺术家使用斑驳的光来营造一种柔和、催眠的效果。</p>
+<h2 id="斑驳效果"><a href="#斑驳效果" class="headerlink" title="斑驳效果"></a>斑驳效果</h2><p>我们可以在网页设计中使用同样的斑驳效果。使用在照片和插图上，可以为原本单调乏味的内容墙增添魔力，让它们恢复生机。有一种只用 CSS 的简单而快速的方法来添加这个效果。</p>
+<p>在我们开始谈代码之前，了解斑驳光的组成很重要。它是光透过树叶和树枝形成的大光点组成的。因为我们正在谈论的是穿过许多不确定的空间的光，有时阴影区域有清晰的边缘，但更多时候是模糊的。当光从更远的距离投射阴影时，会扩散和扭曲光线附近的墙壁，使得阴影的边界变得模糊。<br>这是有和没有斑驳光照射的白墙的区别：</p>
+<p><img src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2022/01/s_CD332C21E06B9998C2C4A90E3C0E480B2753BB0A4B42D91B522F923752A2AB0A_1640085806943_ss.png?resize=1824,762&ssl=1" alt="效果"></p>
+<p>我将会使用纯文本和有趣的表情符号来创造斑驳的灯光效果，使用 CSS 阴影和混合来模仿自然。我也将会介绍一些其他的方法。</p>
+<h2 id="设置场景"><a href="#设置场景" class="headerlink" title="设置场景"></a>设置场景</h2><p>我们将使用文本（字母表中的字母、特殊字符、表情符号等）来创建光的形状。我所说的光，是指半透明的乳白色。同时，我们想要的是柔和的灯光效果，而不是那种锐利、清晰或鲜明的效果。</p>
+<p>由斑驳的光产生的斑点有多种形状，所以最好的选择是椭圆或长方形的字符。我会使用 🍃、🍂，\因为它们是椭圆的、长方形的和倾斜的，有点混乱且难以预测。</p>
+<p>我将它们包装在 .backdrop 父元素中包含的段落中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;backdrop&quot;</span>&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;shapes&quot;</span>&gt;</span>🍃<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;shapes&quot;</span>&gt;</span>🍂<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;shapes&quot;</span>&gt;</span>\<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我使用父元素作为投射斑驳光影的表面，为其纹理应用背景图像。我不仅给表面一个明确的 width 和 height，而且在它上面设置了隐藏的溢出，这样我就可以投射超出表面的阴影而不暴露它们。由于 CSS 网格，投射出斑驳光效果的对象在背景表面的中间对齐：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.backdrop</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: center / cover no-repeat <span class="built_in">url</span>(<span class="string">&#x27;image.jpeg&#x27;</span>);</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">240px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.backdrop</span> &gt; * &#123;</span><br><span class="line">  grid-area: <span class="number">1</span>/<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果形状没有完全对齐也没有关系，只要它们能够达到你想要的斑驳的效果，就可以了。所以没有必要完全按照我的做法来放置这些东西，你可以尝试调整这些值来获得不同图案的斑驳光！</p>
+<h2 id="在-CSS-中设计斑驳的灯光"><a href="#在-CSS-中设计斑驳的灯光" class="headerlink" title="在 CSS 中设计斑驳的灯光"></a>在 CSS 中设计斑驳的灯光</h2><p>这些是表情符号应该具有的关键属性——transparent 颜色、黑色半透明背景（使用 alpha 通道 inrgbargba()）、font-size 漂亮的模糊白色 text-shadow，最后是 mix-blend-mode 来平滑过渡。<br>mix-blend-mode 设置元素的颜色与其容器的内容的融合方式。该 multiply 值使元素的背景通过元素的浅色显示并保持深色相同，从而产生更好、更自然的斑驳光效果。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.shapes</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: transparent;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.3</span>); // Use alpha transparency</span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">40px</span> <span class="number">#fff</span>; // Blurry white shadow</span><br><span class="line">  <span class="attribute">font</span>: bolder <span class="number">320pt</span>/<span class="number">320pt</span> monospace;</span><br><span class="line">  mix-blend-mode: multiply;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="细化颜色和对比度"><a href="#细化颜色和对比度" class="headerlink" title="细化颜色和对比度"></a>细化颜色和对比度</h2><p>我希望背景上的 background-image 更亮一点，所以我还添加了 filter: brightness(1.6). 另一种实现方法是 background-blend-mode，将一个元素的所有不同背景混合在一起，而不是将表情符号添加为单独的元素，我们将它们添加为背景图像。<br>请注意，在最后一个示例中，我使用了不同的表情符号，以及 floralwhite 一些比纯白色的光线强度更低的颜色。这是展开的表情符号背景图像之一：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">&#x27;http://www.w3.org/2000/svg&#x27;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">foreignObject</span> <span class="attr">width</span>=<span class="string">&#x27;400px&#x27;</span> <span class="attr">height</span>=<span class="string">&#x27;240px&#x27;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">xmlns</span>=<span class="string">&#x27;http://www.w3.org/1999/xhtml&#x27;</span> <span class="attr">style</span>=</span></span><br><span class="line"><span class="tag">      <span class="string">&#x27;font: bolder 720pt/220pt monospace;</span></span></span><br><span class="line"><span class="string"><span class="tag">       color: transparent;</span></span></span><br><span class="line"><span class="string"><span class="tag">       text-shadow: 0 0 40px floralwhite;</span></span></span><br><span class="line"><span class="string"><span class="tag">       background: rgba(0, 0, 0, 0.3);&#x27;</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">      🌾</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">foreignObject</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想将自己的图像用于形状，要确保边界模糊以创造柔和的光线。CSS blur()过滤器可以很方便地处理同样的事情。我还使用 CSS@supports 来调整某些浏览器的阴影模糊值作为后备。<br>现在让我们回到第一个示例并添加一些内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;backdrop&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;shapes&quot;</span>&gt;</span>🍃<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;shapes&quot;</span>&gt;</span>🍂<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;shapes&quot;</span>&gt;</span>\<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;70px&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;float: left; margin-right: 10px;&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">&quot;image.jpeg&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">alt</span>=<span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line">  Top ten tourists spots for the summer vacation <span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">i</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&quot;font-weight: normal;&quot;</span></span></span><br><span class="line"><span class="tag">    &gt;</span>Here are the most popular places...&lt;/i</span><br><span class="line">  &gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>.backdrop 和.shapes 以前的风格基本相同。至于.content 同样位于 之上的.backdrop，我添加 isolation: isolate 以形成一个新的堆叠上下文，将元素从混合中排除，作为一种精炼的触感。</p>
+<h2 id="动画光源"><a href="#动画光源" class="headerlink" title="动画光源"></a>动画光源</h2><p>我还决定添加一个简单的 CSS 动画，并将@keyframes 其应用于.backdrop :hover：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.backdrop</span><span class="selector-pseudo">:hover</span> &gt; <span class="selector-class">.shapes</span><span class="selector-pseudo">:nth-of-type</span>(<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">2s</span> ease-in-out infinite alternate move;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.backdrop</span><span class="selector-pseudo">:hover</span> &gt; <span class="selector-class">.shapes</span><span class="selector-pseudo">:nth-of-type</span>(<span class="number">2</span>)<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">4s</span> ease-in-out infinite alternate move-<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@keyframes</span> move &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="attribute">text-indent</span>: -<span class="number">20px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    <span class="attribute">text-indent</span>: <span class="number">20px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> move-<span class="number">1</span> &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="attribute">text-indent</span>: -<span class="number">60px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    <span class="attribute">text-indent</span>: <span class="number">40px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为 emoji 上的 text-indent 属性设置动画会产生一种非常微妙的运动，就像移动的云层改变光线的方向。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>好了！我们从自然和艺术中汲取了一些灵感，模仿了太阳穿过树木和灌木丛，将斑驳的光和阴影点投射到物体的表面。我们用 CSS 和几个表情符号完成了所有这些。</p>
+<p>这个方法的关键在于我们如何在表情符号上应用颜色，在浅色中使用额外的模糊 text-shadow 来设置光线，半透明的 background-color 定义阴影斑点。我们所要做的就是确保光影的背景使用具有足够对比度的逼真的纹理，这样就能看到斑驳的光线了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/12/26/CSS%20%E2%80%9Cdecorations%E2%80%9D%20%E8%A3%85%E9%A5%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1047,73 +1141,6 @@ var _hmt = _hmt || [];
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/03/11/iOS%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E6%94%BE%E5%A4%A7%EF%BC%8C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shane Ye">
-      <meta itemprop="description" content="Shane's blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shane In Tech Life">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/11/iOS%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E6%94%BE%E5%A4%A7%EF%BC%8C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%EF%BC%9F/" class="post-title-link" itemprop="url">iOS输入框自动放大，如何解决？</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-11 19:32:11" itemprop="dateCreated datePublished" datetime="2021-03-11T19:32:11+08:00">2021-03-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-25 23:34:55" itemprop="dateModified" datetime="2021-05-25T23:34:55+08:00">2021-05-25</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在调试iOS表单的时候，发现点击输入框之后，屏幕会随着检点位置自动放大。但是在安卓中是不会的有这个问题的。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>把<code>&lt;input /&gt;</code>的字体大小为16px或更大，则iOS上的Safari将正常聚焦到输入中。但是，当font-size等于或小于15px时，上述问题再次发生。大概是因为Safari认为该字体太小，希望用户看清楚自己在做什么。因此它会放大以帮助你使用辅助功能。所以如果你不想要这个效果，请使用足够大的字体。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的说，我还是喜欢这个功能。它可以帮助人们看清自己在做什么，并且不建议使用超小字体。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1183,12 +1210,12 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
