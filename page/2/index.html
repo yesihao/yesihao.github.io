@@ -158,6 +158,393 @@ var _hmt = _hmt || [];
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/07/20/CSS%E7%9A%84%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/20/CSS%E7%9A%84%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">CSS的检查工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-20 20:11:39" itemprop="dateCreated datePublished" datetime="2021-07-20T20:11:39+08:00">2021-07-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-10 08:55:54" itemprop="dateModified" datetime="2021-08-10T08:55:54+08:00">2021-08-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发人员的日常生活中，检查CSS并不常见，但有时不得不这样做。也许这是性能评估网页的一部分，为了找出关键的CSS并减少未使用的选择器。也许是为提高访问性，代码库中使用各种颜色对比突出。</p>
+<p>无论情况如何，每当那一时刻到来时，我通常都会使用本文中将要介绍的一些工具。但在此之前，让我们首先看看“检查”CSS意味着什么。</p>
+<h2 id="检查CSS很困难"><a href="#检查CSS很困难" class="headerlink" title="检查CSS很困难"></a>检查CSS很困难</h2><p>一般来说，代码检查涉及分析代码以发现bug或其他不正常的地方，例如可能的性能问题。对于大多数编程语言来说，审核代码的概念相对简单:它是否有效。但是CSS是一种特殊的语言，在这种语言中，错误大多会被浏览器忽略。事实上，你可以通过许多不同的方式实现相同的风格。至少可以说，这使得CSS的检查有点棘手。</p>
+<p>通过为您喜欢的代码编辑器使用扩展或设置检查器或代码检查器，可以防止发现这些错误。但这不是我想在这里展示的，这还不够。我们仍然可能会使用太多的颜色、排版定义或z-index，所有这些都可能导致CSS代码库混乱、不可维护、不稳定。</p>
+<p>为了真正检查CSS，我们需要更深入地挖掘并找到那些是最佳的做法。为了找到这些做法，我们可以使用以下工具。</p>
+<h3 id="浏览器开发工具"><a href="#浏览器开发工具" class="headerlink" title="浏览器开发工具"></a>浏览器开发工具</h3><p>让我们看看用于CSS检查的Chrome 开发工具。</p>
+<p>如果您喜欢手动检查CSS代码，可以使用Inspect工具。通过使用它，我们可以看到应用到特定元素的CSS代码。使用“检查箭头”，我们甚至可以看到关于颜色、字体、大小和可访问性的更多详细信息。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGtukR.png" alt="浏览器开发工具"></p>
+<h3 id="CSS-Overview"><a href="#CSS-Overview" class="headerlink" title="CSS Overview"></a>CSS Overview</h3><p>检查 CSS 是非常基础的，一切都需要手动完成。让我们看看一些更高级的 DevTools 功能。</p>
+<p><em>CSS Overview</em>就是其中之一。要启用 <em>CSS Overview</em>工具，请转到“设置”，单击“实验”，然后启用“<em>CSS Overview</em>”选项。要打开 <em>CSS Overview</em>面板，您可以使用 CMD+Shift+P 快捷键，输入“<em>CSS Overview</em>”，然后选择“显示 <em>CSS Overview</em>”。这个工具总结了 CSS 属性，如颜色、字体、对比度、未使用的声明和媒体查询。我通常使用这个工具来简单判断CSS代码的好坏。例如，如果有“50 级灰度”或太多的排版定义，这意味着风格指南没有得到遵循。</p>
+<h3 id="Coverage-panel"><a href="#Coverage-panel" class="headerlink" title="Coverage panel"></a>Coverage panel</h3><p>覆盖面板<br>覆盖率工具显示页面上使用的代码量和百分比。要查看它，可以使用 CMD+Shift+P 快捷键，键入“coverage”，选择“Show Coverage”，然后单击“refresh”图标。</p>
+<p>也可以通过在 URL 过滤器输入中键入“.css”来仅过滤 CSS 文件。我通常使用这个工具来了解网站使用的技术。例如，如果我看到覆盖率非常高，我可以假设 CSS 文件是为每个页面单独生成的。它可能不是关键数据，但有时它有助于理解网站的缓存策略。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGGt7n.png" alt="Coverage panel"></p>
+<h3 id="Rendering-Panel"><a href="#Rendering-Panel" class="headerlink" title="Rendering Panel"></a>Rendering Panel</h3><p>渲染面板是另一个有用的工具。要打开渲染面板，再次使用 CMD+Shift+P，这次输入“rendering”，然后选择“Show Rendering”选项。这个工具有很多选项，但我最喜欢的是：</p>
+<ul>
+<li>Paint flashing — 在发生重绘事件时显示绿色矩形。我用它来识别渲染时间过长的区域。</li>
+<li>Layout Shift Regions — 当布局移动发生时 显示蓝色矩形。为了充分利用这些选项，我通常在“网络”选项卡下设置“慢速 3G”预设。我有时会录制我的屏幕，然后放慢视频速度以找到布局变化。</li>
+</ul>
+<p>其他选项可能更有助于调试问题，例如模拟和禁用各种功能、强制使用首选颜色方案功能或打印介质类型以及禁用本地字体。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGJevF.png" alt="Rendering Panel"></p>
+<h3 id="Performance-Monitor"><a href="#Performance-Monitor" class="headerlink" title="Performance Monitor"></a>Performance Monitor</h3><p>性能监视器<br>另一个用于检查性能 CSS 代码的工具是性能监视器。要启用它，再次使用 CMD+Shift+P，键入“performance monitor”，然后选择“显示性能监视器”选项。我通常使用这个工具来查看在与页面交互时或动画发生时触发了多少重新计算和布局。</p>
+<p><img src="https://z3.ax1x.com/2021/08/09/fGYGon.png" alt="Performance Monitor"></p>
+<h3 id="Perfomance-panel"><a href="#Perfomance-panel" class="headerlink" title="Perfomance panel"></a>Perfomance panel</h3><p>“性能”面板显示页面加载期间所有浏览器事件的详细视图。要启用性能工具，请执行 CMD+Shift+P，键入“性能”，选择“显示性能”，然后单击“重新加载”图标。我通常启用“屏幕截图”和“Web Vitals”选项。对我来说最有趣的指标是 First Paint、First Contentful Paint、Layout Shifts 和 Largest Contentful Paint。还有一个饼图显示绘画和渲染时间。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>CSS无处不在，我们需要把它视为每个项目的一等公民。别人怎么看你的CSS并不重要，重要的是你怎么看它。如果你的CSS井然有序并且编写良好，那么您将花费更少的时间调试它，从而得以花更多的时间开发新功能。在理想的世界中，我们会教育每个人写好的CSS，但这需要时间。</p>
+<p>让今天成为你开始关心CSS代码的日子。</p>
+<p>我知道不是每个人都喜欢检查CSS。但是，如果在这些工具上运行代码，并试图改进CSS代码库的哪怕一部分，那么本文就完成了它的工作。</p>
+<p>如果你知道任何其他工具，请在评论中告诉我。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/06/29/Azure%20DevOps%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2React%E5%BA%94%E7%94%A8%E5%88%B0Azure%20App%20Service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/29/Azure%20DevOps%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2React%E5%BA%94%E7%94%A8%E5%88%B0Azure%20App%20Service/" class="post-title-link" itemprop="url">Azure DevOps自动化部署React应用到Azure App Service</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-29 00:15:33" itemprop="dateCreated datePublished" datetime="2021-06-29T00:15:33+08:00">2021-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-05 17:36:26" itemprop="dateModified" datetime="2021-07-05T17:36:26+08:00">2021-07-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Azure DevOps 提供了项目管理和源代码管理的功能，它的<strong>自动化</strong>构建和发布可以让我们专注于业务逻辑，省去了一些CI/CD的繁杂琐事。</p>
+<p>根据 Azure 的官方文档，</p>
+<blockquote>
+<p>Microsoft Azure 具有充分的自由和灵活性，可以随时随地生成、管理和部署应用程序，帮助用户实现目标。使用你首选的语言、框架和基础结构（甚至可使用你自己的数据中心和其他云）解决大大小小的难题。</p>
+</blockquote>
+<p>本文将介绍如何使用Azure DevOps创建React应用的构建和发布管道<strong>部署到</strong> Azure App Service，快速上手Azure DevOps<strong>自动化部署</strong></p>
+<h2 id="创建应用服务"><a href="#创建应用服务" class="headerlink" title="创建应用服务"></a>创建应用服务</h2><p>要部署 React 应用，首先需要在 Azure 上创建应用服务。顾名思义，应用程序服务（<strong>Azure App Service</strong>）是用于构建、部署和扩展 Web 应用程序的平台。</p>
+<p>以下是步骤：</p>
+<ol>
+<li>如果尚未在 Azure 上创建帐户，则可以选择免费帐户。</li>
+</ol>
+<p><img src="/images/2021-06/3e3e7f80-013c-4db8-8019-f817a8eaa742_Screenshot_2020-08-26_Microsoft_Azure.png" alt="App_Services"></p>
+<ol start="2">
+<li>对于<strong>订阅</strong>，请选择您的免费订阅。为此应用程序创建一个新的 <strong>Resource Group</strong>。本文使用名为 <strong>react-example-deploy</strong> 的资源组。选择 <strong>Node 10.14</strong> 作为 <strong>Runtime Stack</strong>，选择 <strong>Windows</strong> 作为 <strong>Operating System</strong>。最后，请选择离您最近的地区或保持默认。</li>
+</ol>
+<p><img src="/images/2021-06/c47aa07d-795c-4b10-b16d-2592f53c2c7d_Screenshot_2020-08-26_Microsoft_Azure.png" alt="App_Service_Config"></p>
+<ol start="3">
+<li>点击创建几分钟后，您的新应用服务将上线，您将看到这样的消息。你可以访问 {AppServiceName}.azurewebsites.net 来查看它的实际效果。现在是一个磨人页面，之后 React 应用程序将部署在同一个 URL 上。</li>
+</ol>
+<p><img src="/images/2021-06/7aacaf93-4334-48a0-ac54-ee0d87df11a5_Screenshot_2020-08-26_Microsoft_Azure.png" alt="Deployment_Complete"></p>
+<h2 id="创建应用服务-1"><a href="#创建应用服务-1" class="headerlink" title="创建应用服务"></a>创建应用服务</h2><p>在这里，我们将使用 Azure DevOps 在我们的应用程序中简化持续集成和持续部署。</p>
+<h3 id="创建-Azure-DevOps-组织"><a href="#创建-Azure-DevOps-组织" class="headerlink" title="创建 Azure DevOps 组织"></a>创建 Azure DevOps 组织</h3><p>如果你已经创建了 Azure DevOps 组织，请随意跳过。以下是创建 Azure DevOps 组织的步骤：</p>
+<ol>
+<li>登录到 <a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?LinkId=307137">Azure DevOps</a>.</li>
+<li>点击 <strong>New organization</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/c3d9ecdd-1219-459a-a104-461cd09f07d5_Screenshot_2020-08-26_Projects_-_Home.png" alt="New_Organization"></p>
+<ol start="3">
+<li>你会被问到是否继续. 选择 <strong>继续</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/a67a7903-00b0-48a3-8d04-3110b5ddbf55_Screenshot_2020-08-26_Signup.png" alt="Continue"></p>
+<ol start="4">
+<li>然后您将被要求为您的组织提供一个唯一的名称。输入一个唯一的名称并点击继续。本文使用名为 ReactExampleDeploy 的组织。<br>反应示例部署</li>
+</ol>
+<p><img src="/images/2021-06/7f7435be-14c3-4d15-9f2a-0f09d076df99_Screenshot_2020-08-26_Signup.png" alt="ReactExampleDeploy"></p>
+<p>您的组织现已创建，可以通过 <a target="_blank" rel="noopener" href="https://dev.azure.com/%7Byourorganization%7D">https://dev.azure.com/{yourorganization}</a> 访问，其中 yourorganization 是您组织的名称。</p>
+<h3 id="Creating-a-Project创建项目"><a href="#Creating-a-Project创建项目" class="headerlink" title="Creating a Project创建项目"></a>Creating a Project创建项目</h3><p>在 Azure DevOps 组织仪表板上，创建一个新项目。为您的项目指定一个唯一名称，然后点击创建项目</p>
+<p><img src="/images/2021-06/e63c7526-2144-404c-b9bb-5ba0b811ef98_Screenshot_2020-08-26_Projects_-_Home.png" alt="New_Project"></p>
+<h3 id="推动-React-项目"><a href="#推动-React-项目" class="headerlink" title="推动 React 项目"></a>推动 React 项目</h3><p>您现在将 React 应用程序从您的本地机器推送到您刚刚通过命令行创建的项目。</p>
+<ol>
+<li>在您的应用程序的根目录中，运行以下命令。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Initial Commit&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>bash</p>
+<ol start="2">
+<li>在您的项目仪表板上，转到 Repos。复制从命令行推送现有存储库下的代码并在命令行中运行相同的代码。可能会要求您登录 Azure 帐户以继续操作。把代码push到仓库。</li>
+</ol>
+<p><img src="/images/2021-06/63fdbff3-7269-4eb7-8245-1bbb15fc6f6c_Screenshot_2020-08-26_Files_-_Repos.png" alt="Pushing Project"></p>
+<p>运行此命令后，您可以在 Repos → Files 下看到您的 React 项目。<img src="/images/2021-06/b56256ad-25fc-4c7a-90c7-5ef83c9a6c17_Screenshot_2020-08-26_React_Deploy_Example_-_Repos.png" alt="Pushed"></p>
+<p>现在你已将应用推送到 Azure DevOps 项目，下一步是创建用于构建工件的管道和用于部署 React 应用的发布管道。</p>
+<h2 id="创建构建工件管道"><a href="#创建构建工件管道" class="headerlink" title="创建构建工件管道"></a>创建构建工件管道</h2><p>根据 Azure 的文档，“您可以使用 Azure Pipelines运行构建、执行测试并将代码（发布）自动部署到各种开发和生产环境。”</p>
+<p>以下是创建构建工件管道的步骤。</p>
+<ol>
+<li>单击 <strong>Pipelines</strong> 选项卡然后单击<strong>Create Pipeline</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/1ca5f76c-462d-41db-bbc3-92a5ccba3ed7_Screenshot_2020-08-26_Pipelines_-_Recent.png" alt="Create a Pipeline"></p>
+<ol start="2">
+<li>当被问到“你的代码在哪里？”时，选择使用经典编辑器选项。</li>
+</ol>
+<p><img src="/images/2021-06/60e35362-aaf2-48d5-b411-fc00492a299c_Screenshot_2020-08-26_New_pipeline_-_Pipelines.png" alt="Use the classic editor"></p>
+<ol start="4">
+<li>选择 <strong>Azure Repos Git</strong> 作为源，将其他所有内容保留为默认值，然后点击<strong>Continue</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/da1f9012-08ff-4981-84f4-181107d118d8_Screenshot_2020-08-26_Select_a_build_pipeline_template_-_Azure_DevOps_Services.png" alt="Azure Repos Git"></p>
+<ol start="5">
+<li>当要求提供模板时，选择<strong>Empty job</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/6f77988f-d215-4d53-b002-c75c854ad5a0_Screenshot_2020-08-26_Select_a_build_pipeline_template_-_Azure_DevOps_Services.png" alt="Empty_Job"></p>
+<ol start="6">
+<li>单击 + 号</li>
+</ol>
+<p><img src="/images/2021-06/8f173509-c4f7-473b-b468-c0f96cfeed73_Screenshot_2020-08-26_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="React CI"></p>
+<p>搜索“npm”并添加两次 npm 任务。</p>
+<p><img src="/images/2021-06/617d2c57-1221-4ebf-9ae0-2eabea5dd49e_Screenshot_2020-08-27_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="npm"></p>
+<p>你可能会问，为什么要两次？由于此任务用于node包，因此您需要另一个用于构建项目的任务；不存在默认任务，因此您需要为此创建自定义任务。</p>
+<p>点击第二个npm任务，配置如下。</p>
+<ul>
+<li>将显示名称更改为 <strong>npm run build</strong>.</li>
+<li>将命令更改为自定义.</li>
+<li>在命令和参数中添加运行构建</li>
+</ul>
+<p><img src="/images/2021-06/f676d67a-3492-43d6-9ce1-8822c1d9426c_Screenshot_2020-08-27_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="npm run build"></p>
+<ol start="7">
+<li>现在，搜索发布构建工件并将其添加到代理作业 1。</li>
+</ol>
+<p><img src="/images/2021-06/d150b433-a058-4fe5-b534-2e8361bf4665_Screenshot_2020-08-27_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="Publish build artifacts"></p>
+<p>单击 <strong>Publish build artifacts</strong> 然后修改 <strong>Path to publish</strong>为 <strong>build</strong>.</p>
+<p><img src="/images/2021-06/85b1ba09-a21c-4fa0-9364-71f8c980fcf4_Screenshot_2020-08-27_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="Path to publish"></p>
+<ol start="8">
+<li>转到触发器选项卡并选择启用持续集成。您可以将其他所有内容保留为默认值。</li>
+</ol>
+<p><img src="/images/2021-06/1e0eb583-8f74-46da-b045-219fc4df12b9_Screenshot_2020-08-27_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="CI"></p>
+<ol start="9">
+<li>最后，单击  <strong>Save &amp; queue</strong> 并再次点击 <strong>Save &amp; queue</strong>。</li>
+</ol>
+<p><img src="/images/2021-06/d6676f6e-f877-4962-838d-3ab3bda0a66b_Screenshot_2020-08-27_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="Save &amp; queue"></p>
+<p>在运行管道模式中，将所有内容保留为默认值，然后点击保存并运行。</p>
+<p><img src="/images/2021-06/7db6e272-598c-4dd2-a271-7ff321cd2b04_Screenshot_2020-08-27_React_Deploy_Example-CI_-_Azure_DevOps_Services.png" alt="Save and run"></p>
+<p>几分钟后，管道将成功完成运行。您可以在 Pipelines 选项卡下检查以验证它。</p>
+<h2 id="创建发布管道"><a href="#创建发布管道" class="headerlink" title="创建发布管道"></a>创建发布管道</h2><p>发布管道将部署在上一节中构建的工件。</p>
+<p>以下是创建发布管道的步骤：</p>
+<ol>
+<li>转到Pipelines** → <strong>Releases</strong>  然后单击 <strong>New pipeline</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/a6befd50-2ba4-419b-932c-02a0f0aa6517_Screenshot_2020-08-27_Releases_-_Pipelines.png" alt="New pipeline release"></p>
+<ol start="2">
+<li>选择<strong>Azure App Service Deployment</strong> 然后点击 <strong>Apply</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/7e4fc497-2b42-4f50-8361-509108076c04_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Azure App Service Deployment"></p>
+<p>您将被要求为<strong>Stage</strong>命名。进入 <strong>Production</strong> 并关闭模态。</p>
+<p><img src="/images/2021-06/1a9f6b2b-3464-4d40-9515-26b9fdceb93c_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Production"></p>
+<ol start="3">
+<li>现在点击 <strong>Add an artifact</strong>.</li>
+</ol>
+<p><img src="/images/2021-06/0846557d-4dac-4e79-9fef-6248539e3be8_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Add an artifact"></p>
+<p>对于 Source，选择您在上一节中创建的管道，即 React Deploy Example-CI。将其他所有内容保留为默认值，然后点击添加。</p>
+<p><img src="/images/2021-06/369d13ca-013e-40bb-9e93-39f2c6a8a7f3_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="React Deploy Example-CI"></p>
+<ol start="4">
+<li>要配置持续部署，请单击 Artifacts 中的闪电图标。</li>
+</ol>
+<p><img src="/images/2021-06/0b6b47a5-a83b-4c2f-a9ae-c6a84a45eee6_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Ligthning"></p>
+<p>启用第一个禁用选项，在 Build 分支中输入 master，然后关闭模态框。</p>
+<p><img src="/images/2021-06/a9770a53-78ba-4114-9d84-560bda45771c_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="master"></p>
+<ol start="5">
+<li>在 <strong>Stages</strong>下面 点击 <strong>1 job, 1 task</strong> .</li>
+</ol>
+<p><img src="/images/2021-06/14d07b88-ca17-4f3b-8383-b3aaa45d95ea_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Stages"></p>
+<p>会弹出配置 <strong>Deploy Azure App Service</strong>.</p>
+<p><img src="/images/2021-06/e7e9a20d-480e-471c-9d7f-7b430ebc8f36_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Deploy Azure App Service"></p>
+<p>根据您的订阅选择 Azure 订阅。您可能需要单击授权并授权订阅。</p>
+<p><img src="/images/2021-06/3b2f08e1-7658-45fb-a7ec-5f0428165cf4_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Azure subscription"></p>
+<p><img src="/images/2021-06/34047e33-fe7f-402f-a19d-022ac245b665_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="App service name"></p>
+<p>点击 <strong>Deploy Azure App Service</strong>, 然后在 <strong>Package or folder</strong> 输入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(System.DefaultWorkingDirectory)/_React Deploy Example-CI/drop</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/2021-06/445bb1b9-e451-426c-9490-835a46d81a5d_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="drop"></p>
+<ol start="6">
+<li>最后点击保存</li>
+</ol>
+<p><img src="/images/2021-06/9dc625f8-0746-474c-931b-1ed7d0fbbe3a_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Save"></p>
+<p>Leave the modal that appears at default and hit <strong>OK</strong>.</p>
+<p><img src="/images/2021-06/ad975bb4-5ca9-4f7e-a318-1f282c5dd6c5_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="OK"></p>
+<p>现在，单击 Create release，它将出现在 Save 按钮的右侧。</p>
+<p><img src="/images/2021-06/9e0e1305-1fd2-4f6d-a1aa-21f83b120554_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Create release"></p>
+<p>创建发布</p>
+<p><img src="/images/2021-06/bbb2725a-d5a5-44d7-b1ea-02a49982c4de_Screenshot_2020-08-27_New_release_pipeline_-_Pipelines.png" alt="Create"></p>
+<p>几分钟后，您的应用程序将部署在 {yourappservicename}.azurewebsites.net。</p>
+<p>由于您已经配置了 CI/CD，您可以在本地机器上更新应用程序并将提交推送到 repo，这将触发新版本，并且您的 React 应用程序将被更新。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在本文中，我们讨论了如何使用 CI/CD 将 React 应用程序部署到 Azure App Service 的过程。</p>
+<p>下一步，可以去尝试探索 Azure 提供的不同功能。</p>
+<p>以下是一些相关文档。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-in/services/app-service/#features">Azure App Service</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops">Azure Pipelines</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/05/30/React%20Portals/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/30/React%20Portals/" class="post-title-link" itemprop="url">React Portals</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-30 20:55:16" itemprop="dateCreated datePublished" datetime="2021-05-30T20:55:16+08:00">2021-05-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-31 11:56:17" itemprop="dateModified" datetime="2021-05-31T11:56:17+08:00">2021-05-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>什么是<em>Portals</em>？如何以及何时使用它<br>React v16 引入了一个称为<em>Portals</em>的新功能。 Portals 提供了一种快速简便的方法来将子组件渲染到存在于父组件的 DOM 层次结构之外的 DOM 节点中。 React 在单个 DOM 节点下渲染整个应用程序 - 应用程序根（root）。但是如果你想在根 DOM 节点之外渲染子节点怎么办？那是你使用<em>Portals</em>的时候。比如当父元素具有样式（如 z-index 将其推到页面的最前面或overflow: hidden）你又希望子元素在视觉上显示在其容器顶部时。</p>
+<h2 id="它是如何工作的"><a href="#它是如何工作的" class="headerlink" title="它是如何工作的"></a>它是如何工作的</h2><p><em>Portals</em>可以位于 DOM 树中的任何位置，它在其他方面的行为都像一个普通的 React 子节点。无论子节点是否是<em>Portals</em>，诸如上下文之类的功能都完全相同，因为无论在 DOM 树中的位置如何，<em>Portals</em>仍然存在于 React 树中。这包括事件冒泡。即使那些元素不是DOM树中的祖先，从<em>Portals</em>内部触发的事件也将传播到包含React的树中的祖先。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>我建议它创建一个组件，然后在每次需要时使用。首先，我们需要在 index.html 中创建一个 DOM 元素（就像我们为附加应用程序而创建的根元素），这是所有<em>Portals</em>组件将被挂载的地方。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;portal-components&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后创建Portal组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; PureComponent &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;portal-components&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Portal</span> <span class="keyword">extends</span> <span class="title">PureComponent</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props)</span><br><span class="line">    <span class="built_in">this</span>.el = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    rootElement.appendChild(<span class="built_in">this</span>.el)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    rootElement.removeChild(<span class="built_in">this</span>.el)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> ReactDOM.createPortal(</span><br><span class="line">      <span class="built_in">this</span>.props.children,</span><br><span class="line">      <span class="built_in">this</span>.el</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Portal</span><br></pre></td></tr></table></figure>
+
+<p>最后这样使用它</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Portal&gt;</span><br><span class="line">  &#123;Everithing here is going to be attachaded outside the root DOM node&#125;</span><br><span class="line">&lt;/Portal&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在使用<em>Portals</em>的时候，所有在<Portal>组件中被渲染的子元素都会相对与屏幕绝对定位，我建议使用css：<em>position: fixed</em>来调整位置。</Portal></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yesihao.com/2021/04/21/React%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%96%B9%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -688,251 +1075,6 @@ var _hmt = _hmt || [];
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/09/23/%E5%B1%82%E5%8F%A0%E7%BA%B8%E6%95%88%E6%9E%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shane Ye">
-      <meta itemprop="description" content="Shane's blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shane In Tech Life">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/23/%E5%B1%82%E5%8F%A0%E7%BA%B8%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">层叠纸效果</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-23 22:12:46" itemprop="dateCreated datePublished" datetime="2020-09-23T22:12:46+08:00">2020-09-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-02 21:11:07" itemprop="dateModified" datetime="2021-02-02T21:11:07+08:00">2021-02-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在一种流行的设计是创建一个容器，并在里面堆叠其他纸，然后添加分层或三维样式。我们可以使用CSS来完成这个效果，而且还可以做成多种类型的堆叠纸设计。接下来我们将展示3个不同效果。</p>
-<h2 id="底部垂直层叠纸"><a href="#底部垂直层叠纸" class="headerlink" title="底部垂直层叠纸"></a>底部垂直层叠纸</h2><p>这里的想法是，我们的内容容器是顶层纸，并且更多的纸堆在其下方，并且其边缘显示在顶层纸的底部。</p>
-<p><img src="/images/%E5%B1%82%E5%8F%A0%E7%BA%B8%E6%95%88%E6%9E%9C1.jpg" alt="层叠纸效果1"></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;paper&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.paper</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">2px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.15</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">7px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="对角层叠纸"><a href="#对角层叠纸" class="headerlink" title="对角层叠纸"></a>对角层叠纸</h2><p>这是一种效果使用的方法略有不同，我们使用::before和::after伪元素来创建其他纸张，而不是前面的示例中使用的box-shadow属性。</p>
-<p><img src="/images/%E5%B1%82%E5%8F%A0%E7%BA%B8%E6%95%88%E6%9E%9C2.jpg" alt="层叠纸效果2"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.paper</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">2px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.15</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">7px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="混乱层叠纸"><a href="#混乱层叠纸" class="headerlink" title="混乱层叠纸"></a>混乱层叠纸</h2><p>我们可以使用与上一个示例相同的伪元素技术，使纸页错开以创建的凌乱形态，这里会使用transform属性旋转底层纸页。（注意transform属性浏览器兼容性）。</p>
-<p><img src="/images/%E5%B1%82%E5%8F%A0%E7%BA%B8%E6%95%88%E6%9E%9C2.jpg" alt="层叠纸效果2"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.paper</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.25</span>);</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#bbb</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">95%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">99%</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-<span class="number">1deg</span>);</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.paper</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">right</span>: -<span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">1deg</span>);</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/08/29/%E4%BD%BF%E7%94%A8IntersectionObserver%E6%A3%80%E6%9F%A5%E9%A1%B5%E9%9D%A2%E6%98%AF%E5%90%A6%E6%BB%9A%E5%8A%A8%E5%88%B0%E7%89%B9%E5%AE%9A%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shane Ye">
-      <meta itemprop="description" content="Shane's blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shane In Tech Life">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/29/%E4%BD%BF%E7%94%A8IntersectionObserver%E6%A3%80%E6%9F%A5%E9%A1%B5%E9%9D%A2%E6%98%AF%E5%90%A6%E6%BB%9A%E5%8A%A8%E5%88%B0%E7%89%B9%E5%AE%9A%E7%82%B9/" class="post-title-link" itemprop="url">使用IntersectionObserver检查页面是否滚动到特定点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-29 22:19:41" itemprop="dateCreated datePublished" datetime="2020-08-29T22:19:41+08:00">2020-08-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 21:20:39" itemprop="dateModified" datetime="2020-09-15T21:20:39+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>网页滚动就是一个DOM事件。我可以使用window.scrollY随时查看窗口滚动了多远。我可以监听该事件并获取该数值：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;scroll&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">window</span>.scrollY)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>假设我想知道用户是否向下滚动了100px或更多，我可以通过判断window.Y &gt; 100来进行测试。这里，我将结果log出来：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;scroll&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.scrollY &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Not past 100px&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Past 100px!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;pixel-to-watch&quot;</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>虽然它简单，易于理解且有效，但这是一个坏主意。因为这有点反模式，这种事件会发生很多次。当用户向下滚动页面时，它可以轻松触发几十，数百或数千次。每次这样做，我们都必须在JavaScript的单线程上运行。这意味着需要更多的时间来解决滚动问题，而花费较少的时间进行其他重要的事情。</p>
-<p>有很多方法可以减少这种强度，并且自然地，这是一个非常好的主意。Throttling和Debouncing是JavaScript中提高性能的良好模式。其要点是，在它们执行之前，它们阻止执行较大的JavaScript。</p>
-<p>不过，还有更好的方法:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;pixel-to-watch&quot;</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#pixel-to-watch &#123;</span><br><span class="line">  <span class="attr">position</span>: absolute;</span><br><span class="line">  width: 1px;</span><br><span class="line">  height: 1px;</span><br><span class="line">  top: 100px;</span><br><span class="line">  left: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用IntersectionObserver:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> observer = <span class="keyword">new</span> IntersectionObserver(<span class="function"><span class="params">entries</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(entries);</span><br><span class="line">  <span class="keyword">if</span> (entries[<span class="number">0</span>].boundingClientRect.y &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Past 100px!&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Not past 100px&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">observer.observe(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#pixel-to-watch&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2020/07/30/%E5%8F%8D%E5%90%91%E5%AD%97%E7%AC%A6%E4%B8%B2%20-%20JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Shane Ye">
-      <meta itemprop="description" content="Shane's blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Shane In Tech Life">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/30/%E5%8F%8D%E5%90%91%E5%AD%97%E7%AC%A6%E4%B8%B2%20-%20JavaScript/" class="post-title-link" itemprop="url">反向字符串 - JavaScript</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-30 18:29:11" itemprop="dateCreated datePublished" datetime="2020-07-30T18:29:11+08:00">2020-07-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-02 18:36:33" itemprop="dateModified" datetime="2021-02-02T18:36:33+08:00">2021-02-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>反向字符串问题是常见的算法问题。我们需要写一个反向字符串的函数，如果将“tom”传递给函数，则返回“mot”。在本文中，我们将考虑针对它的4个JavaScript解决方案。</p>
-<h2 id="方法1-使用数组reverse·方法"><a href="#方法1-使用数组reverse·方法" class="headerlink" title="方法1.使用数组reverse·方法"></a>方法1.使用数组reverse·方法</h2><p>有了Array.reverse() 方法，我们可以轻松地反转数组。 reverse() 方法将数组反转到位。但我们正在处理字符串，这意味着我们必须使用split方法将字符串转换为数组，使用reverse方法将其反向，并使用join方法将其转换回字符串。 这是代码示例。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> array = string.split(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  array.reverse()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array.join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们可以使用箭头函数写成一行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverseString = <span class="function">(<span class="params">string</span>) =&gt;</span> string.split(<span class="string">&#x27;&#x27;</span>).reverse().join(<span class="string">&#x27;&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="方法2-使用For-Of循环"><a href="#方法2-使用For-Of循环" class="headerlink" title="方法2.使用For Of循环"></a>方法2.使用For Of循环</h2><p>这是反向转换字符串的经典示例。我们在这里要做的是创建一个空字符串，该字符串将保留反向的string，循环遍历字符串中的每个字符，并将其附加到新字符串的开头。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> reverseString = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> character <span class="keyword">of</span> str) &#123;</span><br><span class="line">    reverseString = character + reverseString;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> reverseString</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方法3-使用Array-reduce"><a href="#方法3-使用Array-reduce" class="headerlink" title="方法3.使用Array.reduce()"></a>方法3.使用Array.reduce()</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">reduce</a>方法在数组的每个元素上执行reducer函数，从而产生单个输出值。要使用reduce方法，我们需要将字符串转换为数组。接下来，我们使用reduce方法将其转换为字符串。这样，reducer将字符串的每个字符附加到累加值，该累加器值就是反转的字符串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> array = string.split(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> reversedString = array.reduce(<span class="function">(<span class="params">reversed, character</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> character + reversed</span><br><span class="line">  &#125;, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> reversedString</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述函数也可以写成下面的形式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverseString = <span class="function">(<span class="params">string</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> string.split(<span class="string">&#x27;&#x27;</span>).reduce(<span class="function">(<span class="params">reversed, character</span>) =&gt;</span> character + reversed, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>甚至可以写成更短的单行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverseString = <span class="function">(<span class="params">string</span>) =&gt;</span> string.split(<span class="string">&#x27;&#x27;</span>).reduce(<span class="function">(<span class="params">rev, char</span>) =&gt;</span> char + rev, <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法4-使用递归"><a href="#方法4-使用递归" class="headerlink" title="方法4.使用递归"></a>方法4.使用递归</h2><p>你熟悉递归的吗？ 递归是一种通过使用调用自身的函数来解决问题的方法。每次函数调用自身时，它将问题减少为子问题。该递归调用继续进行，直到到达无需进一步递归。<br>你可以<a target="_blank" rel="noopener" href="https://dev.to/sloan/explain-recursion-like-im-five-5c6">参考</a>。</p>
-<p>首先我们使用string.substring（）方法获取删除字符串中的第一个字符，并将其他字符传递给函数。 然后，将第一个字符添加到return语句中，如下面的代码所示。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">string</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(string === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> string</span><br><span class="line">  &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> reverse(string.substring(<span class="number">1</span>)) + string[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以使用三元操作符简化上述函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">string</span>) </span>&#123;</span><br><span class="line"> 	<span class="keyword">return</span> string ? reverse(string.substring(<span class="number">1</span>)) + string[<span class="number">0</span>] : string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这样就可以用四种很酷的方法来反转JavaScript中的字符串。扎实的数据结构和算法知识来自许多实践，还有什么更好的方式欢迎留言。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1002,12 +1144,12 @@ var _hmt = _hmt || [];
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
