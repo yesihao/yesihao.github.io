@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?36cdc51609c26be7d6ab923d48be2ee6";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yesihao.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言我们都熟悉将 CSS 样式以 link 的形式引用到 HTML 文档&lt;head&gt;标签的方法，这只是我们写 CSS 的几种方法之一。但在一个单页面应用程序(SPA)中，比如在 React 项目中，它是什么样子的呢?有几种方法可以对 React 应用程序增加样式。有些与传统方式重叠，有些则没有那么多规则。 引入外部样式表就像标题所说，React 可以引入样式文件。这个过程有点像 htm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在React应用中写CSS的集中方式">
+<meta property="og:url" content="http://yesihao.com/2022/06/20/%E5%9C%A8React%E5%BA%94%E7%94%A8%E4%B8%AD%E5%86%99CSS%E7%9A%84%E9%9B%86%E4%B8%AD%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Shane In Tech Life">
+<meta property="og:description" content="前言我们都熟悉将 CSS 样式以 link 的形式引用到 HTML 文档&lt;head&gt;标签的方法，这只是我们写 CSS 的几种方法之一。但在一个单页面应用程序(SPA)中，比如在 React 项目中，它是什么样子的呢?有几种方法可以对 React 应用程序增加样式。有些与传统方式重叠，有些则没有那么多规则。 引入外部样式表就像标题所说，React 可以引入样式文件。这个过程有点像 htm">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-20T12:31:48.000Z">
+<meta property="article:modified_time" content="2022-07-04T13:36:53.112Z">
+<meta property="article:author" content="Shane Ye">
+<meta property="article:tag" content="React, CSS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yesihao.com/2022/06/20/%E5%9C%A8React%E5%BA%94%E7%94%A8%E4%B8%AD%E5%86%99CSS%E7%9A%84%E9%9B%86%E4%B8%AD%E6%96%B9%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>在React应用中写CSS的集中方式 | Shane In Tech Life</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Shane In Tech Life</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">as above</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yesihao.com/2022/06/20/%E5%9C%A8React%E5%BA%94%E7%94%A8%E4%B8%AD%E5%86%99CSS%E7%9A%84%E9%9B%86%E4%B8%AD%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Shane Ye">
+      <meta itemprop="description" content="Shane's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shane In Tech Life">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在React应用中写CSS的集中方式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-20 20:31:48" itemprop="dateCreated datePublished" datetime="2022-06-20T20:31:48+08:00">2022-06-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-04 21:36:53" itemprop="dateModified" datetime="2022-07-04T21:36:53+08:00">2022-07-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们都熟悉将 CSS 样式以 link 的形式引用到 HTML 文档<code>&lt;head&gt;</code>标签的方法，这只是我们写 CSS 的几种方法之一。但在一个单页面应用程序(SPA)中，比如在 React 项目中，它是什么样子的呢?有几种方法可以对 React 应用程序增加样式。有些与传统方式重叠，有些则没有那么多规则。</p>
+<h2 id="引入外部样式表"><a href="#引入外部样式表" class="headerlink" title="引入外部样式表"></a>引入外部样式表</h2><p>就像标题所说，React 可以引入样式文件。这个过程有点像 html 用 link 引入 CSS</p>
+<ul>
+<li>在项目目录创建创建新的 CSS 文件</li>
+<li>写 CSS 样式</li>
+<li>在 React 的文件头部 import CSS 文件，如下：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; React &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./Components/css/App.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;main&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h3 id="写内联样式"><a href="#写内联样式" class="headerlink" title="写内联样式"></a>写内联样式</h3><p>You may be used to hearing that inline styling isn’t all that great for maintainability and whatnot, but there are definitely situations (here’s one!) where it makes sense. And maintainability is less of an issue in React, as the CSS often already sits inside the same file anyway.</p>
+<p>This is a super simple example of inline styling in React:<br>您可能经常听到内联样式对于可维护性和诸如此类的东西并不是那么好，但是在某些情况下内联样式是有意义的。在 React 中，可维护性不是什么大问题，因为 CSS 通常已经放在同一个文件中了。</p>
+<p>这是 React 中一个超级简单的内联样式示例:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">&quot;main&quot;</span> style=&#123;&#123;<span class="attr">color</span>:<span class="string">&quot;red&quot;</span>&#125;&#125;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>更好的方式是是先创建样式对象，然后放入 style 参数中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; React &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> styles = &#123;</span><br><span class="line">    <span class="attr">main</span>: &#123;</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&#x27;#f1f1f1&#x27;</span>,</span><br><span class="line">      <span class="attr">width</span>: <span class="string">&#x27;100%&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">inputText</span>: &#123;</span><br><span class="line">      <span class="attr">padding</span>: <span class="string">&#x27;10px&#x27;</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;main&quot;</span> <span class="attr">style</span>=<span class="string">&#123;styles.main&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">style</span>=<span class="string">&#123;styles.inputText&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CSS-Module"><a href="#CSS-Module" class="headerlink" title="CSS Module"></a>CSS Module</h2><p>CSS 模块具有局部作用域变量的优点，可以与 React 一起使用。它到底是什么呢?</p>
+<p>CSS 模块的工作原理是将单个 CSS 文件编译成 CSS。CSS 输出是正常的全局 CSS，可以直接注入到浏览器中，也可以连接在一起并写入文件以供生产使用。数据用于将您在文件中使用的人类可读的名称映射到全局安全的输出 CSS。</p>
+<p>简单地说，CSS Modules 允许我们在多个文件中使用相同的类名而不会发生冲突，因为每个类名都有一个唯一的 id 名。这在较大的应用程序中特别有用。每个类名的局部作用域都限定在它被导入的特定组件上。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* styles.module.css */</span></span><br><span class="line">.font &#123;</span><br><span class="line">  <span class="attr">color</span>: #f00;</span><br><span class="line">  font-size: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; React &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&quot;./styles.module.css&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&#123;styles.heading&#125;</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="styled-components"><a href="#styled-components" class="headerlink" title="styled-components"></a>styled-components</h2><p>Have you used styled-components? It’s quite popular and allows you to build custom components using actual CSS in your JavaScript. A styled-component is basically a React component with — get ready for it — styles. Some of the features include unique class names, dynamic styling and better management of the CSS as each component has its own separate styles.</p>
+<p>Install the styled-components npm package in the command line:<br>你使用过<code>styled-components</code>吗? 可以使用它在 JavaScript 中使用实际的 CSS 构建自定义组件。一个<code>styled-components</code>基本上是一个带有样式的 React 组件。其中的一些特性包括惟一的类名、动态样式和更好的 CSS 管理，因为每个组件都有自己独立的样式。</p>
+<p>在命令行中安装<code>styled-components</code>的 npm 包:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install styled-components</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; React &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> styled <span class="keyword">from</span> <span class="string">&#x27;styled-components&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> Wrapper = styled.div<span class="string">`</span></span><br><span class="line"><span class="string">    width: 100%;</span></span><br><span class="line"><span class="string">    height: 100px;</span></span><br><span class="line"><span class="string">    background-color: red;</span></span><br><span class="line"><span class="string">    display: block;</span></span><br><span class="line"><span class="string">  `</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Wrapper</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<p>条件样式</p>
+<p><code>styled-components</code>的优点之一是组件本身是具有函数功能的，因为你可以在 CSS 中使用 props。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; React, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> styled <span class="keyword">from</span> <span class="string">&#x27;styled-components&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// display state</span></span><br><span class="line">  <span class="keyword">const</span> [display, setDisplay] = useState(<span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Wrapper</span> $<span class="attr">display</span>=<span class="string">&#123;display&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setDisplay(!display)&#125;&gt;Toggle<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// the wrapper styled component</span></span><br><span class="line"><span class="keyword">const</span> Wrapper = styled.div<span class="string">`</span></span><br><span class="line"><span class="string">  width: 100%;</span></span><br><span class="line"><span class="string">  height: 100px;</span></span><br><span class="line"><span class="string">  background-color: red;</span></span><br><span class="line"><span class="string">  display: <span class="subst">$&#123;(props) =&gt; (props.$display ? <span class="string">&#x27;block&#x27;</span> : <span class="string">&#x27;none&#x27;</span>)&#125;</span>;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们研究了几种在React应用程序中编写样式的不同方法。并不是说哪一个比其他的好，因为每种方法的好坏取决于具体的情况。希望现在你已经很好地理解了它们，并知道在React样式工具中有找到合适的。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React-CSS/" rel="tag"># React, CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/21/%E4%BD%A0%E5%8F%AF%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E5%85%B3%E4%BA%8ENetlify%20CLI%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" rel="prev" title="你可能不知道关于Netlify CLI的一些事">
+      <i class="fa fa-chevron-left"></i> 你可能不知道关于Netlify CLI的一些事
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">引入外部样式表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">写内联样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Module"><span class="nav-number">3.</span> <span class="nav-text">CSS Module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#styled-components"><span class="nav-number">4.</span> <span class="nav-text">styled-components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Shane Ye</p>
+  <div class="site-description" itemprop="description">Shane's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shane Ye</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
