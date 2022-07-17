@@ -28,9 +28,6 @@ export default App;
 
 ### 写内联样式
 
-You may be used to hearing that inline styling isn’t all that great for maintainability and whatnot, but there are definitely situations (here’s one!) where it makes sense. And maintainability is less of an issue in React, as the CSS often already sits inside the same file anyway.
-
-This is a super simple example of inline styling in React:
 您可能经常听到内联样式对于可维护性和诸如此类的东西并不是那么好，但是在某些情况下内联样式是有意义的。在 React 中，可维护性不是什么大问题，因为 CSS 通常已经放在同一个文件中了。
 
 这是 React 中一个超级简单的内联样式示例:
