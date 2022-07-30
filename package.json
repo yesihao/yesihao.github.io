@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "hexo s",
-    "build": "hexo clean & hexo deploy && ssh -i ~/.ssh/azure yesihao@file.yesihao.com rm -rf /www/wwwroot/yesihao.com/* && scp -i ~/.ssh/azure -r public/* yesihao@file.yesihao.com:/www/wwwroot/yesihao.com"
+    "build": "hexo clean & hexo deploy",
+    "deploy": "hexo clean & hexo deploy && ssh -i ~/.ssh/azure yesihao@file.yesihao.com rm -rf /www/wwwroot/yesihao.com/* && scp -i ~/.ssh/azure -r public/* yesihao@file.yesihao.com:/www/wwwroot/yesihao.com"
   },
   "hexo": {
     "version": "5.4.0"
