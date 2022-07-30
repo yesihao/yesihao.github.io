@@ -7,7 +7,7 @@ tags: Serverless, Azure, Azure Function, VS Code
 ## 前言
 
 本文将介绍部署Azure Function的完整过程。这一次会使用**Node.js**作为开发语言，以及使用**VS Code**作为编辑器。
-![如何使用VS Code如何快速部署Azure Function-1](/images/如何使用VS Code如何快速部署Azure Function-1.jpg)
+![如何使用VS Code如何快速部署Azure Function-1](/images/如何使用VS-Code如何快速部署Azure-Function-1.jpg)
 
 在后面的博文中会写到如何提高Node.js Azure functions的性能。
 

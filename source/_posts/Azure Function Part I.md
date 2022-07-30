@@ -17,7 +17,7 @@ tags: Serverless, Azure, Azure Function
 
 首先在扩展市场中搜索Azure functions，你也可以直接安裝Azure App Service，这样你就拥有所有相关扩展服务，也可以仅安裝Azure Functions。
 
-![Azure Function扩展](/images/Azure Function Ext.jpg)
+![Azure Function扩展](/images/Azure-Function-Ext.jpg)
 
 接著，我们要安裝 Azure Function Core Tools，在命令行安装：
 
@@ -36,11 +36,11 @@ brew install azure-functions-core-tools
 
 或者我们可以点击Debug | Run, VS Code会自动提示安装Azure Function Core Tools，确定后自动执行上方命令。
 
-![Azure Function Core Tools 自动安装](/images/Azure Function Debug1.jpg)
+![Azure Function Core Tools 自动安装](/images/Azure-Function-Debug1.jpg)
 
 安裝成功之后，我们可以在命令行输入 **func** 来检查是否安装成功。
 
-![Azure Function Core Tools 安装成功](/images/Azure Function Core Tools.jpg)
+![Azure Function Core Tools 安装成功](/images/Azure-Function-Core-Tools.jpg)
 
 出现 **闪电** 就说明安装成功了！
 

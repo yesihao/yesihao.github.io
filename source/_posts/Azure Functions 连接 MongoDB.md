@@ -11,19 +11,19 @@ tags: Serverless, Azure, Azure Function, MongoDB
 ## 创建一个简单的Azure函数
 
 在之前的文章中已经讲解了如何创建Azure Functions，这里也不再赘述。首先我们在Azure Portal上创建一个Azure Function。
-![创建好的Azure Function](/images/Azure Functions 连接 MongoDB1.jpg)
+![创建好的Azure Function](/images/Azure-Functions-连接-MongoDB1.jpg)
 
 ## 安装MongoDB驱动程序
 接下来让我们将该功能连接到数据库。在Azure Function中添加npm模块与在AWS Lambda的过程非常不同。使用Azure Functions，必须登录到服务器，然后创建package.json，然后运行npm install。对于“无服务器”架构来说，这似乎很奇怪，但是好处就是不必一遍又一遍地捆绑相同的依赖，也不必担心node_modules运行在Lambda对函数大小的限制。
 
 要安装MongoDB Node.js驱动程序，请首先转到<your-function-name>.scm.azurewebsites.net，然后单击“调试控制台”->“ PowerShell”。
-![PowerShell](/images/Azure Functions 连接 MongoDB2.jpg)
+![PowerShell](/images/Azure-Functions-连接-MongoDB2.jpg)
 
 转到D:\home\site\wwwroot目录下，新建名为的package.json文件，增加MongoDB一览，最后保存。
-![创建好package.json](/images/Azure Functions 连接 MongoDB3.jpg)
+![创建好package.json](/images/Azure-Functions-连接-MongoDB3.jpg)
 
 执行`npm i`
-![执行`npm i`](/images/Azure Functions 连接 MongoDB4.jpg)
+![执行`npm i`](/images/Azure-Functions-连接-MongoDB4.jpg)
 
 
 回到Azure Function编辑界面，写入代码。
